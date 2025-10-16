@@ -7,7 +7,7 @@ import CartModal from '@/components/cart/CartModal';
 import CategorySidebar from '@/components/layout/CategorySidebar';
 import MobileNav from '@/components/layout/MobileNav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Phone, Clock, MapPin } from 'lucide-react';
+import { Mail, Phone, Clock, MapPin, Zap, Shield, Truck, Award, Star, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const SinglePageLayout = () => {
@@ -15,6 +15,8 @@ const SinglePageLayout = () => {
   const [selectedCategory, setSelectedCategory] = useState('All Products');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeSection, setActiveSection] = useState<'products' | 'about' | 'support'>('products');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
   const productsRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -60,6 +62,15 @@ const SinglePageLayout = () => {
       for (let i = 0; i < quantity; i++) {
         addToCart(selectedProduct);
       }
+    }
+  };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newsletterEmail.trim()) {
+      setNewsletterSubmitted(true);
+      setNewsletterEmail('');
+      setTimeout(() => setNewsletterSubmitted(false), 3000);
     }
   };
 
@@ -201,6 +212,171 @@ const SinglePageLayout = () => {
               </CardContent>
             </Card>
           </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="scroll-mt-32">
+          <div className="space-y-8">
+            <h2 className="text-3xl font-semibold text-gray-900">Why Our Customers Love Us</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-6 text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-3 bg-blue-100 rounded-lg">
+                      <Zap className="h-6 w-6 text-blue-700" />
+                    </div>
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Fast Delivery</h3>
+                  <p className="text-sm text-gray-600">Quick and reliable shipping to your doorstep within 2-3 business days</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-6 text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-3 bg-green-100 rounded-lg">
+                      <Shield className="h-6 w-6 text-green-700" />
+                    </div>
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">100% Authentic</h3>
+                  <p className="text-sm text-gray-600">All products sourced directly from authorized distributors and manufacturers</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-6 text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-3 bg-purple-100 rounded-lg">
+                      <Award className="h-6 w-6 text-purple-700" />
+                    </div>
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Expert Support</h3>
+                  <p className="text-sm text-gray-600">Knowledgeable team ready to help with product recommendations and advice</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-6 text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-3 bg-orange-100 rounded-lg">
+                      <Truck className="h-6 w-6 text-orange-700" />
+                    </div>
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Best Prices</h3>
+                  <p className="text-sm text-gray-600">Competitive pricing with regular promotions and exclusive member discounts</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Statistics Section */}
+        <section className="scroll-mt-32">
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-8 md:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-bold text-blue-700 mb-2">50K+</div>
+                <p className="text-gray-700 font-medium">Happy Customers</p>
+                <p className="text-sm text-gray-600 mt-1">Trusted by vapers across the UK</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-blue-700 mb-2">10K+</div>
+                <p className="text-gray-700 font-medium">Products in Stock</p>
+                <p className="text-sm text-gray-600 mt-1">Extensive selection of quality items</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-blue-700 mb-2">4.8★</div>
+                <p className="text-gray-700 font-medium">Average Rating</p>
+                <p className="text-sm text-gray-600 mt-1">Based on customer reviews</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="scroll-mt-32">
+          <div className="space-y-8">
+            <h2 className="text-3xl font-semibold text-gray-900">What Our Customers Say</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="border-gray-200 shadow-sm">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4 italic">"Excellent selection and fast delivery. The quality of products is outstanding. Highly recommended!"</p>
+                  <p className="font-semibold text-gray-900">Sarah M.</p>
+                  <p className="text-sm text-gray-600">Verified Customer</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-gray-200 shadow-sm">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4 italic">"Great customer service and competitive prices. I've been a loyal customer for over a year now."</p>
+                  <p className="font-semibold text-gray-900">James T.</p>
+                  <p className="text-sm text-gray-600">Verified Customer</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-gray-200 shadow-sm">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4 italic">"Best vape shop online. Always authentic products and the team is super helpful with recommendations."</p>
+                  <p className="font-semibold text-gray-900">Emma L.</p>
+                  <p className="text-sm text-gray-600">Verified Customer</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="scroll-mt-32">
+          <Card className="border-gray-200 shadow-sm bg-gradient-to-r from-blue-900 to-blue-800">
+            <CardContent className="p-8 md:p-12">
+              <div className="max-w-2xl mx-auto text-center">
+                <h2 className="text-2xl md:text-3xl font-semibold text-white mb-3">Stay Updated</h2>
+                <p className="text-blue-100 mb-6">Subscribe to our newsletter for exclusive deals, new product launches, and vaping tips delivered to your inbox.</p>
+
+                {newsletterSubmitted ? (
+                  <div className="flex items-center justify-center gap-2 bg-green-100 text-green-800 px-4 py-3 rounded-lg">
+                    <CheckCircle className="h-5 w-5" />
+                    <span className="font-medium">Thanks for subscribing!</span>
+                  </div>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="email"
+                      placeholder="Enter your email address"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      className="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 outline-none focus:ring-2 focus:ring-yellow-400"
+                      required
+                    />
+                    <Button
+                      type="submit"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg flex items-center justify-center gap-2 whitespace-nowrap"
+                    >
+                      <Send className="h-4 w-4" />
+                      Subscribe
+                    </Button>
+                  </form>
+                )}
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         {/* Support Section */}
