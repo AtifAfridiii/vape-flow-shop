@@ -6,6 +6,7 @@ import { CartProvider } from "@/contexts/CartContext";
 import { SidebarProvider } from "@/contexts/SidebarContext";
 import Header from "@/components/layout/Header";
 import SinglePageLayout from "@/components/layout/SinglePageLayout";
+import AgeVerificationModal from "@/components/AgeVerificationModal";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
         <SidebarProvider>
           <Toaster />
           <Sonner />
+          <AgeVerificationModal />
           <div className="min-h-screen bg-background">
             <Header />
             <SinglePageLayout />

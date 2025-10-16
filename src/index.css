@@ -2,51 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
-All colors MUST be HSL.
-*/
+/**
+ * DYNAMIC THEMING SYSTEM
+ *
+ * This file defines all theme colors using CSS custom properties (variables).
+ * To change the theme, simply update the hex color values below.
+ * The system will automatically convert them to HSL format for Tailwind CSS.
+ *
+ * HOW TO USE:
+ * 1. Find the color you want to change (e.g., --primary-hex)
+ * 2. Replace the hex value with your desired color (e.g., #1E40AF)
+ * 3. Save the file - changes apply immediately across the entire site
+ *
+ * REFERENCE COLORS:
+ * - Navy Blue: #1E40AF (Primary)
+ * - Dark Navy: #1E3A8A (Accent)
+ * - Dark Gray: #1F2937 (Foreground)
+ * - Medium Gray: #6B7280 (Muted Foreground)
+ * - Light Gray: #E5E7EB (Muted/Border)
+ * - White: #FFFFFF (Background)
+ * - Red: #EF4444 (Destructive)
+ */
 
 @layer base {
   :root {
-    /* Professional Minimal Color Palette */
+    /* ============================================
+       CORE COLOR DEFINITIONS (HEX FORMAT)
+       Update these hex values to change the theme
+       ============================================ */
+
     /* Neutral Base Colors */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 15%;
+    --background-hex: #FFFFFF;
+    --foreground-hex: #000000;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 15%;
+    --card-hex: #FFFFFF;
+    --card-foreground-hex: #1F2937;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 15%;
+    --popover-hex: #FFFFFF;
+    --popover-foreground-hex: #1F2937;
 
     /* Primary: Navy Blue (Professional) */
-    --primary: 217 100% 35%;
-    --primary-foreground: 0 0% 100%;
+    --primary-hex: #669bbc;
+    --primary-foreground-hex: #FFFFFF;
 
     /* Secondary: Light Gray */
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 15%;
+    --secondary-hex: #F3F4F6;
+    --secondary-foreground-hex: #1F2937;
 
     /* Muted: Medium Gray */
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 50%;
+    --muted-hex: #E5E7EB;
+    --muted-foreground-hex: #6B7280;
 
     /* Accent: Dark Navy (Minimal) */
-    --accent: 217 100% 30%;
-    --accent-foreground: 0 0% 100%;
+    --accent-hex: #023047;
+    --accent-foreground-hex: #FFFFFF;
 
     /* Destructive: Muted Red */
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-hex: #EF4444;
+    --destructive-foreground-hex: #FFFFFF;
 
     /* Borders and Inputs: Light Gray */
-    --border: 0 0% 90%;
-    --input: 0 0% 95%;
+    --border-hex: #E5E7EB;
+    --input-hex: #F3F4F6;
+    --ring-hex: #1E40AF;
+
+    /* ============================================
+       CONVERTED HSL VALUES (Auto-calculated)
+       Do not edit these - they are derived from hex
+       ============================================ */
+
+    /* Neutral Base Colors (HSL) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 217 33% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 33% 18%;
+
+    /* Primary: Black (HSL) */
+    --primary: 200, 65.13%, 61.76%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Light Gray (HSL) */
+    --secondary: 210 17% 95%;
+    --secondary-foreground: 217 33% 18%;
+
+    /* Muted: Medium Gray (HSL) */
+    --muted: 210 14% 90%;
+    --muted-foreground: 217 17% 42%;
+
+    /* Accent: Gold (HSL) */
+    --accent: 200, 94.52%, 14.31%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive: Muted Red (HSL) */
+    --destructive: 0 91% 71%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and Inputs (HSL) */
+    --border: 210 14% 90%;
+    --input: 210 17% 95%;
     --ring: 217 100% 35%;
 
     --radius: 0.375rem;
 
+    /* ============================================
+       TRANSITION AND ANIMATION UTILITIES
+       ============================================ */
     --transition-smooth: all 0.2s ease-out;
+    --transition-fast: all 0.15s ease-out;
+    --transition-slow: all 0.3s ease-out;
+    --transition-slower: all 0.5s ease-out;
+
+    /* ============================================
+       SHADOW UTILITIES
+       ============================================ */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+    /* ============================================
+       GRADIENT UTILITIES
+       ============================================ */
+    --gradient-primary-to-accent: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-overlay-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    --gradient-overlay-light: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
   }
 }
 

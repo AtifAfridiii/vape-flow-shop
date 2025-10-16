@@ -15,21 +15,25 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   letter-spacing: -0.01em;
+  transition: var(--transition-smooth);
 }
 
 h1 {
   font-size: 2rem;
   line-height: 1.2;
+  color: hsl(var(--foreground));
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 1.3;
+  color: hsl(var(--foreground));
 }
 
 h3 {
   font-size: 1.25rem;
   line-height: 1.4;
+  color: hsl(var(--foreground));
 }
 
 /* Paragraph spacing */
@@ -40,20 +44,49 @@ p {
 
 /* Link styling */
 a {
-  color: hsl(217 100% 35%);
+  color: hsl(var(--primary));
   text-decoration: none;
-  transition: color 0.2s ease-out;
+  transition: var(--transition-smooth);
+  position: relative;
 }
 
 a:hover {
-  color: hsl(217 100% 30%);
-  text-decoration: underline;
+  color: hsl(var(--accent));
+}
+
+a:active {
+  opacity: 0.8;
 }
 
 /* Minimal focus states */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  outline: 2px solid hsl(217 100% 35%);
+  outline: 2px solid hsl(var(--primary));
   outline-offset: 2px;
+  transition: var(--transition-fast);
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+input,
+select,
+textarea {
+  transition: var(--transition-smooth);
+}
+
+/* Enhanced button hover effects */
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Input focus enhancement */
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
 }

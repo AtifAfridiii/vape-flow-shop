@@ -77,8 +77,8 @@ const Header = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-40 bg-blue-900 border-b border-blue-950 transition-shadow duration-300 ${
-        isScrolled ? 'shadow-lg' : 'shadow-sm'
+      <header className={`fixed top-0 left-0 right-0 z-40 bg-accent border-b border-accent/80 transition-all duration-300 ${
+        isScrolled ? 'shadow-xl' : 'shadow-md'
       }`}>
         <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
           {/* Left: Menu Button and Logo */}
@@ -87,7 +87,7 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={toggleSidebar}
-              className="text-white hover:bg-blue-800 hover:text-white flex-shrink-0"
+              className="text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground flex-shrink-0"
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -111,24 +111,24 @@ const Header = () => {
           {/* Right: Professional Search Bar (Hidden on mobile) */}
           <div className="hidden md:flex max-w-2xl relative">
             <form onSubmit={handleSearch} className="w-full">
-              <div className="relative flex items-center bg-yellow-50 border border-yellow-200 rounded-lg shadow-sm hover:border-yellow-300 focus-within:border-blue-700 focus-within:ring-1 focus-within:ring-blue-700 transition-all">
-                <Search className="h-4 w-4 text-gray-500 ml-3 flex-shrink-0" />
+              <div className="relative flex items-center bg-input border border-border rounded-lg shadow-md hover:shadow-lg hover:border-accent/50 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 focus-within:shadow-lg transition-all duration-200">
+                <Search className="h-4 w-4 text-muted-foreground ml-3 flex-shrink-0" />
                 <input
                   type="text"
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => handleSearchChange(e.target.value)}
                   onFocus={() => searchQuery && setShowResults(true)}
-                  className="flex-1 bg-transparent ml-2 text-sm text-gray-900 placeholder-gray-500 outline-none py-2.5"
+                  className="flex-1 bg-transparent ml-2 text-sm text-foreground placeholder-muted-foreground outline-none py-2.5"
                 />
                 {isSearching && (
-                  <Loader className="h-4 w-4 text-gray-400 mr-3 animate-spin flex-shrink-0" />
+                  <Loader className="h-4 w-4 text-muted-foreground mr-3 animate-spin flex-shrink-0" />
                 )}
                 {searchQuery && !isSearching && (
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="text-gray-400 hover:text-gray-600 mr-3 flex-shrink-0 transition-colors"
+                    className="text-muted-foreground hover:text-foreground mr-3 flex-shrink-0 transition-colors"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -137,13 +137,13 @@ const Header = () => {
 
               {/* Search Results Dropdown */}
               {showResults && searchResults.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-xl z-50 max-h-96 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="p-2">
                     {searchResults.slice(0, 8).map((product) => (
                       <button
                         key={product.id}
                         onClick={() => handleProductClick(product.name)}
-                        className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors text-left border-b border-gray-100 last:border-b-0"
+                        className="w-full flex items-center gap-3 p-3 hover:bg-secondary rounded-lg transition-all duration-150 text-left border-b border-border last:border-b-0 hover:translate-x-1"
                       >
                         <img
                           src={product.image}
@@ -151,18 +151,18 @@ const Header = () => {
                           className="w-10 h-10 object-cover rounded"
                         />
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-gray-900 truncate">
+                          <p className="text-sm font-medium text-foreground truncate">
                             {product.name}
                           </p>
-                          <p className="text-xs text-gray-600">{product.category}</p>
+                          <p className="text-xs text-muted-foreground">{product.category}</p>
                         </div>
-                        <p className="text-sm font-semibold text-blue-700 flex-shrink-0">
+                        <p className="text-sm font-semibold text-primary flex-shrink-0">
                           £{product.price.toFixed(2)}
                         </p>
                       </button>
                     ))}
                     {searchResults.length > 8 && (
-                      <div className="p-3 text-center text-sm text-gray-600 border-t border-gray-100">
+                      <div className="p-3 text-center text-sm text-muted-foreground border-t border-border">
                         {searchResults.length - 8} more results
                       </div>
                     )}
@@ -172,8 +172,8 @@ const Header = () => {
 
               {/* No Results Message */}
               {showResults && searchResults.length === 0 && !isSearching && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 p-4 text-center">
-                  <p className="text-sm text-gray-600">No products found</p>
+                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-xl z-50 p-4 text-center animate-in fade-in slide-in-from-top-2 duration-200">
+                  <p className="text-sm text-muted-foreground">No products found</p>
                 </div>
               )}
             </form>
@@ -185,7 +185,7 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="md:hidden text-white hover:bg-blue-800 hover:text-white"
+              className="md:hidden text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground"
             >
               <Search className="h-5 w-5" />
             </Button>
@@ -194,11 +194,11 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={() => setCartOpen(true)}
-              className="relative text-white hover:bg-blue-800 hover:text-white"
+              className="relative text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground"
             >
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-blue-700 text-white text-xs font-semibold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full h-5 w-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
@@ -208,10 +208,10 @@ const Header = () => {
 
         {/* Mobile Search Bar */}
         {isSearchOpen && (
-          <div className="md:hidden border-t border-blue-950 bg-blue-900 px-4 py-3">
+          <div className="md:hidden border-t border-accent/80 bg-accent px-4 py-3 animate-in slide-in-from-top duration-200">
             <form onSubmit={handleSearch} className="relative">
-              <div className="flex items-center bg-yellow-50 border border-yellow-200 rounded-lg px-3 py-2.5">
-                <Search className="h-4 w-4 text-gray-500 flex-shrink-0" />
+              <div className="flex items-center bg-input border border-border rounded-lg px-3 py-2.5 shadow-md focus-within:shadow-lg focus-within:border-primary transition-all duration-200">
+                <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                 <input
                   type="text"
                   placeholder="Search products..."
@@ -219,16 +219,16 @@ const Header = () => {
                   onChange={(e) => handleSearchChange(e.target.value)}
                   onFocus={() => searchQuery && setShowResults(true)}
                   autoFocus
-                  className="flex-1 bg-transparent ml-2 text-sm text-gray-900 placeholder-gray-500 outline-none"
+                  className="flex-1 bg-transparent ml-2 text-sm text-foreground placeholder-muted-foreground outline-none"
                 />
                 {isSearching && (
-                  <Loader className="h-4 w-4 text-gray-400 animate-spin flex-shrink-0" />
+                  <Loader className="h-4 w-4 text-muted-foreground animate-spin flex-shrink-0" />
                 )}
                 {searchQuery && !isSearching && (
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="text-gray-400 hover:text-gray-600 flex-shrink-0 transition-colors"
+                    className="text-muted-foreground hover:text-foreground flex-shrink-0 transition-colors"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -237,13 +237,13 @@ const Header = () => {
 
               {/* Mobile Search Results */}
               {showResults && searchResults.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-xl z-50 max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="p-2">
                     {searchResults.slice(0, 6).map((product) => (
                       <button
                         key={product.id}
                         onClick={() => handleProductClick(product.name)}
-                        className="w-full flex items-center gap-2 p-2 hover:bg-gray-50 rounded transition-colors text-left border-b border-gray-100 last:border-b-0"
+                        className="w-full flex items-center gap-2 p-2 hover:bg-secondary rounded transition-all duration-150 text-left border-b border-border last:border-b-0 hover:translate-x-1"
                       >
                         <img
                           src={product.image}
@@ -251,12 +251,12 @@ const Header = () => {
                           className="w-8 h-8 object-cover rounded"
                         />
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs font-medium text-gray-900 truncate">
+                          <p className="text-xs font-medium text-foreground truncate">
                             {product.name}
                           </p>
-                          <p className="text-xs text-gray-600">{product.category}</p>
+                          <p className="text-xs text-muted-foreground">{product.category}</p>
                         </div>
-                        <p className="text-xs font-semibold text-blue-700 flex-shrink-0">
+                        <p className="text-xs font-semibold text-primary flex-shrink-0">
                           £{product.price.toFixed(2)}
                         </p>
                       </button>

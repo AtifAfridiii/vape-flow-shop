@@ -6,6 +6,9 @@ export interface Product {
   price: number;
   image: string;
   category: string;
+  featured?: boolean;
+  trending?: boolean;
+  bestSeller?: boolean;
 }
 
 export interface CartItem extends Product {

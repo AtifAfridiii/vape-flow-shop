@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Product, useCart } from '@/contexts/CartContext';
 import { products } from '@/data/products';
 import HeroCarousel from '@/components/home/HeroCarousel';
+import TrendingNow from '@/components/home/TrendingNow';
+import BestSelling from '@/components/home/BestSelling';
 import ProductGrid from '@/components/products/ProductGrid';
 import CartModal from '@/components/cart/CartModal';
 import CategorySidebar from '@/components/layout/CategorySidebar';
@@ -37,6 +39,18 @@ const Home = () => {
 
       <div className="space-y-6">
         <HeroCarousel />
+
+        {/* Trending Now Section */}
+        <TrendingNow
+          products={products}
+          onAddToCart={handleAddToCart}
+        />
+
+        {/* Best Selling Section */}
+        <BestSelling
+          products={products}
+          onAddToCart={handleAddToCart}
+        />
 
         <div>
           <h2 className="text-2xl font-bold text-foreground mb-4">
