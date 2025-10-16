@@ -9,89 +9,100 @@ export const categories = [
   'Starter Kits',
 ];
 
+import img1 from '@/images/1.png';
+import img2 from '@/images/2.png';
+import img3 from '@/images/3.png';
+import img4 from '@/images/4.png';
+import img5 from '@/images/5.png';
+import img6 from '@/images/6.png';
+import img7 from '@/images/7.png';
+import img8 from '@/images/8.png';
+import img9 from '@/images/9.png';
+import img10 from '@/images/10.png';
+
 export const products: Product[] = [
   {
     id: '1',
     name: 'Crystal Pro Max',
     price: 12.99,
-    image: 'https://tse4.mm.bing.net/th/id/OIP._Xl2yb9xtNgenzlnymwoCgHaHa?pid=Api&P=0&h=220',
+    image: img1,
     category: 'Disposable Vapes',
   },
   {
     id: '2',
     name: 'Elf Bar 600',
     price: 5.99,
-    image: 'https://tse3.mm.bing.net/th/id/OIP.e2Ylk59_Yw3gZJwp9UhmKQHaHa?pid=Api&P=0&h=220',
+    image: img2,
     category: 'Disposable Vapes',
   },
   {
     id: '3',
     name: 'SMOK Nord 4',
     price: 29.99,
-    image: 'https://tse4.mm.bing.net/th/id/OIP.lb-a17u3BJMRcQb3Uw3P5QHaHa?pid=Api&P=0&h=220',
+    image: img3,
     category: 'Pod Systems',
   },
   {
     id: '4',
     name: 'Vaporesso XROS 3',
     price: 24.99,
-    image: 'https://tse1.mm.bing.net/th/id/OIP.nBdbXXBsfl_WsSwtNYa0CQHaHa?pid=Api&P=0&h=220',
+    image: img4,
     category: 'Pod Systems',
   },
   {
     id: '5',
     name: 'Blue Raspberry E-liquid',
     price: 3.99,
-    image: 'https://image.made-in-china.com/2f0j00fkCinNRKhHUt/Freeton-4500-Puffs-Disposable-Vape-Ecig-Pen-Vaporizer-Pod.jpg',
+    image: img5,
     category: 'E-liquids',
   },
   {
     id: '6',
     name: 'Strawberry Ice E-liquid',
     price: 3.99,
-    image: 'https://tse4.mm.bing.net/th/id/OIP.vXSkMHPjeSAhkRBhtrgYZQHaEK?pid=Api&P=0&h=220',
+    image: img6,
     category: 'E-liquids',
   },
   {
     id: '7',
     name: 'USB-C Charging Cable',
     price: 4.99,
-    image: 'https://image.made-in-china.com/2f0j00zjmbiYdMiyqN/8000-Puffs-Disposable-Vape-Rechargeable-Vaporizer-Pod.jpg',
+    image: img7,
     category: 'Accessories',
   },
   {
     id: '8',
     name: 'Replacement Pods (3 Pack)',
     price: 8.99,
-    image: 'https://shop.vape.hk/wp-content/uploads/2025/10/IVG-Reload-Mini-Prefilled-Pod-Kit.jpg',
+    image: img8,
     category: 'Accessories',
   },
   {
     id: '9',
     name: 'Beginner Vape Kit',
     price: 34.99,
-    image: 'https://www.shisha-heaven.ch/wp-content/uploads/2022/08/lost-vape-ursa-nano-pod-set-wave-purple.jpg',
+    image: img9,
     category: 'Starter Kits',
   },
   {
     id: '10',
     name: 'Premium Pod Kit',
     price: 44.99,
-    image: 'https://tse3.mm.bing.net/th/id/OIP.l1OOr7Zcb4JQnhChO3tiuwHaD5?pid=Api&P=0&h=220',
+    image: img10,
     category: 'Starter Kits',
   },
   {
     id: '11',
     name: 'Lost Mary BM600',
     price: 5.49,
-    image: 'https://image.made-in-china.com/2f0j00KhIVveQEEwMc/2023-New-Arrival-Vape-Tugboat-Super-Pod-7000-12000-Puffs-Disposable-Vaporizer-Pod.jpg',
+    image: img1,
     category: 'Disposable Vapes',
   },
   {
     id: '12',
     name: 'Mango Ice E-liquid',
     price: 3.99,
-    image: 'https://image.made-in-china.com/2f0j00OMZlKFsCiYfA/New-Tugboat-Tikobar-Nova-12000-Puffs-Nicotine-Vaporizer-Pod-Eliquid-Rechargeable-E-Cigarette-Disposable-Cartridge-Empty-Wholesale-I-Vape-Pen-E-Hookah-Charger.jpg',
+    image: img2,
     category: 'E-liquids',
   },
 ];

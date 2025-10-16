@@ -2,7 +2,7 @@ import { Menu, ShoppingCart, Search, X, Loader } from 'lucide-react';
 import { useSidebar } from '@/contexts/SidebarContext';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CartSidebar from '@/components/cart/CartSidebar';
 import { products } from '@/data/products';
 
@@ -15,6 +15,17 @@ const Header = () => {
   const [searchResults, setSearchResults] = useState<typeof products>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Detect scroll for header highlight effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -66,7 +77,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 bg-blue-900 border-b border-blue-950 shadow-sm">
+      <header className={`fixed top-0 left-0 right-0 z-40 bg-blue-900 border-b border-blue-950 transition-shadow duration-300 ${
+        isScrolled ? 'shadow-lg' : 'shadow-sm'
+      }`}>
         <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
           {/* Left: Menu Button and Logo */}
           <div className="flex items-center gap-2 flex-shrink-0">
@@ -92,8 +105,11 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Center-Right: Professional Search Bar (Hidden on mobile) */}
-          <div className="hidden md:flex flex-1 max-w-md relative">
+          {/* Center: Spacer */}
+          <div className="hidden md:flex flex-1"></div>
+
+          {/* Right: Professional Search Bar (Hidden on mobile) */}
+          <div className="hidden md:flex max-w-2xl relative">
             <form onSubmit={handleSearch} className="w-full">
               <div className="relative flex items-center bg-yellow-50 border border-yellow-200 rounded-lg shadow-sm hover:border-yellow-300 focus-within:border-blue-700 focus-within:ring-1 focus-within:ring-blue-700 transition-all">
                 <Search className="h-4 w-4 text-gray-500 ml-3 flex-shrink-0" />

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Product, useCart } from '@/contexts/CartContext';
 import { products } from '@/data/products';
 import HeroCarousel from '@/components/home/HeroCarousel';
@@ -19,6 +19,32 @@ const SinglePageLayout = () => {
   const productsRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const supportRef = useRef<HTMLDivElement>(null);
+
+  // Scroll detection to highlight active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        { ref: productsRef, name: 'products' as const },
+        { ref: aboutRef, name: 'about' as const },
+        { ref: supportRef, name: 'support' as const },
+      ];
+
+      // Find which section is currently in view
+      for (const section of sections) {
+        if (section.ref.current) {
+          const rect = section.ref.current.getBoundingClientRect();
+          // If section is in the upper half of the viewport
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+            setActiveSection(section.name);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const filteredProducts =
     selectedCategory === 'All Products'
