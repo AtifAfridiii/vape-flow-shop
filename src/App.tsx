@@ -8,7 +8,6 @@ import { SidebarProvider } from "@/contexts/SidebarContext";
 import Header from "@/components/layout/Header";
 import MobileNav from "@/components/layout/MobileNav";
 import Index from "./pages/Index";
-import Cart from "./pages/Cart";
 import About from "./pages/About";
 import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
@@ -28,7 +27,6 @@ const App = () => (
               <main className="container mx-auto px-4 pt-20 pb-20">
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  <Route path="/cart" element={<Cart />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/support" element={<Support />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
