@@ -5,19 +5,19 @@ import { Button } from '@/components/ui/button';
 const slides = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1567001243478-4c49c0d2fd97?w=1200&h=400&fit=crop',
+    image: 'https://cdn.shopify.com/s/files/1/0195/3510/2014/products/s-l1600_3_800x.png?v=1669549508',
     title: 'Premium Vape Devices',
     subtitle: 'Discover our latest collection',
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1594999618148-99bc1b2c4c57?w=1200&h=400&fit=crop',
+    image: 'https://cdn.shopify.com/s/files/1/0505/5617/4511/files/halo-vape-juice-falling.png',
     title: 'Top Quality E-liquids',
     subtitle: 'Extensive flavor selection',
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1606657070393-cfaa2c6c4e96?w=1200&h=400&fit=crop',
+    image: 'https://cdn.shopify.com/s/files/1/0263/5887/4178/products/vuse-vype-epod-solo-device-14807339106370.png?v=1610304386',
     title: 'Starter Kits Available',
     subtitle: 'Perfect for beginners',
   },
@@ -47,7 +47,7 @@ const HeroCarousel = () => {
   };
 
   return (
-    <div className="relative w-full h-64 md:h-80 overflow-hidden bg-muted rounded-lg">
+    <div className="relative w-full h-64 md:h-[450px] overflow-hidden bg-gray-100 rounded">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -59,11 +59,11 @@ const HeroCarousel = () => {
           <img
             src={slide.image}
             alt={slide.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
-          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">{slide.title}</h2>
-            <p className="text-lg md:text-xl">{slide.subtitle}</p>
+          <div className="absolute inset-0 bg-black/35 flex flex-col items-center justify-center text-white">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-2">{slide.title}</h2>
+            <p className="text-base md:text-lg">{slide.subtitle}</p>
           </div>
         </div>
       ))}
@@ -73,18 +73,18 @@ const HeroCarousel = () => {
         variant="ghost"
         size="icon"
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 text-white"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-5 w-5" />
       </Button>
 
       <Button
         variant="ghost"
         size="icon"
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/25 hover:bg-white/40 text-white"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-5 w-5" />
       </Button>
 
       {/* Dots */}
@@ -93,10 +93,10 @@ const HeroCarousel = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all ${
+            className={`rounded-full transition-all ${
               index === currentSlide
-                ? 'bg-white w-8'
-                : 'bg-white/50 hover:bg-white/75'
+                ? 'bg-white w-8 h-2'
+                : 'bg-white/50 w-2 h-2 hover:bg-white/75'
             }`}
           />
         ))}

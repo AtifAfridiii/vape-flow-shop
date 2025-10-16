@@ -10,7 +10,7 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
   if (products.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-muted-foreground text-lg">No products found in this category.</p>
+        <p className="text-gray-600 text-base">No products found in this category.</p>
       </div>
     );
   }
