@@ -109,7 +109,7 @@ const Header = () => {
           <div className="hidden md:flex flex-1"></div>
 
           {/* Right: Professional Search Bar (Hidden on mobile) */}
-          <div className="hidden md:flex max-w-2xl relative">
+          <div className="hidden md:flex max-w-sm lg:max-w-2xl relative flex-1 md:flex-none">
             <form onSubmit={handleSearch} className="w-full">
               <div className="relative flex items-center bg-input border border-border rounded-lg shadow-md hover:shadow-lg hover:border-accent/50 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 focus-within:shadow-lg transition-all duration-200">
                 <Search className="h-4 w-4 text-muted-foreground ml-3 flex-shrink-0" />
@@ -119,7 +119,7 @@ const Header = () => {
                   value={searchQuery}
                   onChange={(e) => handleSearchChange(e.target.value)}
                   onFocus={() => searchQuery && setShowResults(true)}
-                  className="flex-1 bg-transparent ml-2 text-sm text-foreground placeholder-muted-foreground outline-none py-2.5"
+                  className="flex-1 bg-transparent ml-2 text-sm text-foreground placeholder-muted-foreground outline-none py-2.5 min-w-0"
                 />
                 {isSearching && (
                   <Loader className="h-4 w-4 text-muted-foreground mr-3 animate-spin flex-shrink-0" />
@@ -208,18 +208,18 @@ const Header = () => {
 
         {/* Mobile Search Bar */}
         {isSearchOpen && (
-          <div className="md:hidden border-t border-accent/80 bg-accent px-4 py-3 animate-in slide-in-from-top duration-200">
-            <form onSubmit={handleSearch} className="relative">
-              <div className="flex items-center bg-input border border-border rounded-lg px-3 py-2.5 shadow-md focus-within:shadow-lg focus-within:border-primary transition-all duration-200">
+          <div className="md:hidden border-t border-accent/80 bg-accent px-3 sm:px-4 py-3 animate-in slide-in-from-top duration-200">
+            <form onSubmit={handleSearch} className="relative w-full">
+              <div className="flex items-center bg-input border border-border rounded-lg px-2 sm:px-3 py-2 sm:py-2.5 shadow-md focus-within:shadow-lg focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/30 transition-all duration-200">
                 <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => handleSearchChange(e.target.value)}
                   onFocus={() => searchQuery && setShowResults(true)}
                   autoFocus
-                  className="flex-1 bg-transparent ml-2 text-sm text-foreground placeholder-muted-foreground outline-none"
+                  className="flex-1 bg-transparent ml-2 text-sm text-foreground placeholder-muted-foreground outline-none min-w-0"
                 />
                 {isSearching && (
                   <Loader className="h-4 w-4 text-muted-foreground animate-spin flex-shrink-0" />
@@ -228,7 +228,7 @@ const Header = () => {
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="text-muted-foreground hover:text-foreground flex-shrink-0 transition-colors"
+                    className="text-muted-foreground hover:text-foreground flex-shrink-0 transition-colors ml-1"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -237,8 +237,8 @@ const Header = () => {
 
               {/* Mobile Search Results */}
               {showResults && searchResults.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-xl z-50 max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="p-2">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-xl z-50 max-h-60 sm:max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200 -mx-3 sm:-mx-4 px-3 sm:px-4">
+                  <div className="py-2">
                     {searchResults.slice(0, 6).map((product) => (
                       <button
                         key={product.id}
@@ -248,20 +248,32 @@ const Header = () => {
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-8 h-8 object-cover rounded"
+                          className="w-8 h-8 object-cover rounded flex-shrink-0"
                         />
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-medium text-foreground truncate">
                             {product.name}
                           </p>
-                          <p className="text-xs text-muted-foreground">{product.category}</p>
+                          <p className="text-xs text-muted-foreground truncate">{product.category}</p>
                         </div>
-                        <p className="text-xs font-semibold text-primary flex-shrink-0">
+                        <p className="text-xs font-semibold text-primary flex-shrink-0 ml-1">
                           £{product.price.toFixed(2)}
                         </p>
                       </button>
                     ))}
+                    {searchResults.length > 6 && (
+                      <div className="p-2 text-center text-xs text-muted-foreground border-t border-border">
+                        +{searchResults.length - 6} more
+                      </div>
+                    )}
                   </div>
+                </div>
+              )}
+
+              {/* No Results Message */}
+              {showResults && searchResults.length === 0 && !isSearching && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-xl z-50 p-3 text-center animate-in fade-in slide-in-from-top-2 duration-200 -mx-3 sm:-mx-4 px-3 sm:px-4">
+                  <p className="text-xs text-muted-foreground">No products found</p>
                 </div>
               )}
             </form>

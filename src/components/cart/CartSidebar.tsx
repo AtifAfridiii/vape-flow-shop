@@ -74,7 +74,7 @@ const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
 
   return (
     <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent side="left" className="w-full sm:max-w-md bg-card">
+      <SheetContent side="right" className="w-full sm:max-w-md bg-card">
         <SheetHeader>
           <div className="flex items-center justify-between">
             <SheetTitle className="text-foreground">Shopping Cart</SheetTitle>

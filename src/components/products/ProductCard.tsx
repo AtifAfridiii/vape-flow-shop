@@ -1,7 +1,8 @@
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Check } from 'lucide-react';
 import { Product } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { toast } from 'sonner';
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,25 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
+  const handleAddToCart = () => {
+    onAddToCart(product);
+
+    // Show success toast
+    toast.success(
+      <div className="flex items-center gap-2">
+        <Check className="h-4 w-4" />
+        <div>
+          <p className="font-semibold">{product.name}</p>
+          <p className="text-sm opacity-90">Added to cart</p>
+        </div>
+      </div>,
+      {
+        duration: 3000,
+        position: 'bottom-right',
+      }
+    );
+  };
+
   return (
     <Card className="overflow-hidden border-border shadow-md hover:shadow-xl transition-all duration-300 bg-secondary hover:translate-y-[-4px] group">
       <div className="aspect-square overflow-hidden bg-muted relative">
@@ -26,7 +46,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       </CardContent>
       <CardFooter className="p-4 pt-0">
         <Button
-          onClick={() => onAddToCart(product)}
+          onClick={handleAddToCart}
           className="w-full bg-primary hover:bg-emerald-600 text-primary-foreground hover:text-white text-sm font-medium transition-all duration-200 hover:shadow-lg"
         >
           <ShoppingCart className="h-4 w-4 mr-2 transition-transform duration-200 group-hover:scale-110" />

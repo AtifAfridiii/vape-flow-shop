@@ -32,13 +32,11 @@ const Home = () => {
 
         {/* Trending Now Section */}
         <TrendingNow
-          products={products}
           onAddToCart={handleAddToCart}
         />
 
         {/* Best Selling Section */}
         <BestSelling
-          products={products}
           onAddToCart={handleAddToCart}
         />
 

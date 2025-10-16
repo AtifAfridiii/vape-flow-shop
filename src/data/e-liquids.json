@@ -1,0 +1,64 @@
+[
+  {
+    "id": "el-1",
+    "name": "Blue Raspberry E-liquid",
+    "price": 3.99,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.w5wyhUJ4vBh5kjrF_PGP_QHaHa?pid=Api&P=0&h=220",
+    "category": "E-liquids",
+    "featured": true,
+    "trending": true
+  },
+  {
+    "id": "el-2",
+    "name": "Strawberry Ice E-liquid",
+    "price": 3.99,
+    "image": "https://www.dampflager.de/images/product_images/info_images/vozol-nicsalt-liquids-gallery.jpg",
+    "category": "E-liquids",
+    "bestSeller": true
+  },
+  {
+    "id": "el-3",
+    "name": "Mango Ice E-liquid",
+    "price": 3.99,
+    "image": "https://flavourbeast.com/cdn/shop/files/Dropdown-Menu_FB-E-Liquid-Freebase_30-60ml_2953x5906_823ece44-94e6-4d6e-a141-e38cb132fad3_500x.png?v=1738614502",
+    "category": "E-liquids",
+    "trending": true
+  },
+  {
+    "id": "el-4",
+    "name": "Vanilla Custard E-liquid",
+    "price": 4.49,
+    "image": "https://tse2.mm.bing.net/th/id/OIP.dkbOB8CPXnyjNpW8o0eY8AHaHa?pid=Api&P=0&h=220",
+    "category": "E-liquids"
+  },
+  {
+    "id": "el-5",
+    "name": "Watermelon Burst E-liquid",
+    "price": 3.99,
+    "image": "https://vapshop.ae/wp-content/uploads/2023/01/RIPE-VAPES-E-LIQUID-1.jpg",
+    "category": "E-liquids",
+    "bestSeller": true
+  },
+  {
+    "id": "el-6",
+    "name": "Menthol Chill E-liquid",
+    "price": 3.99,
+    "image": "https://ngpeurope.eu/pcadmin/images/category-images/killa-e-liquids.png",
+    "category": "E-liquids"
+  },
+  {
+    "id": "el-7",
+    "name": "Peach Passion E-liquid",
+    "price": 4.29,
+    "image": "https://tse2.mm.bing.net/th/id/OIP.z5oQ28j_a7fJ-O45Qs8s7AHaEO?pid=Api&P=0&h=220",
+    "category": "E-liquids"
+  },
+  {
+    "id": "el-8",
+    "name": "Grape Fusion E-liquid",
+    "price": 3.99,
+    "image": "https://www.vozol.com/uploads/images/2HmjWmK6d8Ah2w3dshGSBCmyoX9kLVVwdfcQoyUJ.jpg",
+    "category": "E-liquids"
+  }
+]
+

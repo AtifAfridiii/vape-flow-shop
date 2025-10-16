@@ -1,0 +1,49 @@
+[
+  {
+    "id": "vk-1",
+    "name": "Beginner Vape Kit",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
+    "category": "Starter Kits",
+    "featured": true,
+    "bestSeller": true
+  },
+  {
+    "id": "vk-2",
+    "name": "Premium Pod Kit",
+    "price": 44.99,
+    "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
+    "category": "Starter Kits",
+    "trending": true
+  },
+  {
+    "id": "vk-3",
+    "name": "Advanced Vaper Kit",
+    "price": 54.99,
+    "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
+    "category": "Starter Kits",
+    "bestSeller": true
+  },
+  {
+    "id": "vk-4",
+    "name": "Complete Starter Bundle",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
+    "category": "Starter Kits"
+  },
+  {
+    "id": "vk-5",
+    "name": "Professional Vaping Kit",
+    "price": 64.99,
+    "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
+    "category": "Starter Kits"
+  },
+  {
+    "id": "vk-6",
+    "name": "Compact Travel Kit",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
+    "category": "Starter Kits"
+  }
+]
+

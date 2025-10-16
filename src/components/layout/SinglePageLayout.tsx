@@ -84,7 +84,7 @@ const SinglePageLayout = () => {
   return (
     <>
       {/* Navigation Tabs */}
-      <nav className="fixed top-16 left-0 right-0 z-30 bg-card border-b border-border shadow-md">
+      <nav className="fixed top-16 left-0 right-0 z-30 bg-[#f2f3ae] border-b border-border shadow-md">
         <div className="container mx-auto px-4 flex gap-0 h-14 items-center">
           <button
             onClick={() => scrollToSection('products')}
@@ -147,19 +147,16 @@ const SinglePageLayout = () => {
 
             {/* Featured Products */}
             <FeaturedProducts
-              products={products}
               onAddToCart={handleAddToCart}
             />
 
             {/* Trending Now Section */}
             <TrendingNow
-              products={products}
               onAddToCart={handleAddToCart}
             />
 
             {/* Best Selling Section */}
             <BestSelling
-              products={products}
               onAddToCart={handleAddToCart}
             />
 

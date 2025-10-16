@@ -1,0 +1,52 @@
+
+[
+  {
+    "id": "dv-2",
+    "name": "Elf Bar 600",
+    "price": 5.99,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.w6FIWvFqV5S0U21UMn7ClgHaHa?pid=Api&P=0&h=220",
+    "category": "Disposable Vapes",
+    "trending": true
+  },
+  {
+    "id": "dv-4",
+    "name": "Geek Bar Pulse",
+    "price": 8.99,
+    "image":"https://vapebeat.com/wp-content/uploads/2020/07/Geekvape-Aegis-X-Review-1-e1576768154442.png",
+    "category": "Disposable Vapes",
+    "trending": true
+  },
+  {
+    "id": "el-1",
+    "name": "Blue Raspberry E-liquid",
+    "price": 3.99,
+    "image": "https://www.electronic-cigarettesco.co.uk/upload/shop/alabama-tobacco-pulp-e-liquid_qk_xl.jpg",
+    "category": "E-liquids",
+    "trending": true
+  },
+  {
+    "id": "el-3",
+    "name": "Mango Ice E-liquid",
+    "price": 3.99,
+    "image": "https://tse1.mm.bing.net/th/id/OIP.DQdhsVY7i7KZhmmBmpCc1gHaHa?pid=Api&P=0&h=220",
+    "category": "E-liquids",
+    "trending": true
+  },
+  {
+    "id": "ps-2",
+    "name": "Vaporesso XROS 3",
+    "price": 24.99,
+    "image": "https://vapebar.pk/wp-content/uploads/2024/11/Pava-Horiz-Ultra-Pod-Kit-30W-1300mAh.webp",
+    "category": "Pod Systems",
+    "trending": true
+  },
+  {
+    "id": "vk-2",
+    "name": "Premium Pod Kit",
+    "price": 44.99,
+    "image": "https://washington-vapes.co.uk/cdn/shop/files/Titan-X-Prefilled-Pod-KitWashington-Vapes-UK_-Cherry-Fizz-8.99-13549075_1200x1200.webp?v=1751227077",
+    "category": "Starter Kits",
+    "trending": true
+  }
+]
+

@@ -1,17 +1,15 @@
 import { Product } from '@/contexts/CartContext';
 import ProductCard from '@/components/products/ProductCard';
 import { Award } from 'lucide-react';
+import { bestSellingProducts as bestSellingProductsData } from '@/data/products';
 
 interface BestSellingProps {
-  products: Product[];
   onAddToCart: (product: Product) => void;
 }
 
-const BestSelling = ({ products, onAddToCart }: BestSellingProps) => {
-  // Get best-selling products
-  const bestSellingProducts = products
-    .filter((p) => p.bestSeller)
-    .slice(0, 4);
+const BestSelling = ({ onAddToCart }: BestSellingProps) => {
+  // Use dedicated best-selling products data
+  const bestSellingProducts = bestSellingProductsData.slice(0, 4);
 
   if (bestSellingProducts.length === 0) {
     return null;

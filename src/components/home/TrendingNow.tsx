@@ -1,17 +1,15 @@
 import { Product } from '@/contexts/CartContext';
 import ProductCard from '@/components/products/ProductCard';
 import { TrendingUp } from 'lucide-react';
+import { trendingProducts as trendingProductsData } from '@/data/products';
 
 interface TrendingNowProps {
-  products: Product[];
   onAddToCart: (product: Product) => void;
 }
 
-const TrendingNow = ({ products, onAddToCart }: TrendingNowProps) => {
-  // Get trending products
-  const trendingProducts = products
-    .filter((p) => p.trending)
-    .slice(0, 4);
+const TrendingNow = ({ onAddToCart }: TrendingNowProps) => {
+  // Use dedicated trending products data
+  const trendingProducts = trendingProductsData.slice(0, 4);
 
   if (trendingProducts.length === 0) {
     return null;

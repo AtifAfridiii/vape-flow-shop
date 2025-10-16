@@ -1,17 +1,15 @@
 import { Product } from '@/contexts/CartContext';
 import ProductCard from '@/components/products/ProductCard';
 import { Sparkles } from 'lucide-react';
+import { featuredProducts as featuredProductsData } from '@/data/products';
 
 interface FeaturedProductsProps {
-  products: Product[];
   onAddToCart: (product: Product) => void;
 }
 
-const FeaturedProducts = ({ products, onAddToCart }: FeaturedProductsProps) => {
-  // Get featured products or top 4 products
-  const featuredProducts = products
-    .filter((p) => p.featured)
-    .slice(0, 4);
+const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
+  // Use dedicated featured products data
+  const featuredProducts = featuredProductsData.slice(0, 4);
 
   if (featuredProducts.length === 0) {
     return null;

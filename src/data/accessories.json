@@ -1,0 +1,52 @@
+[
+  {
+    "id": "acc-1",
+    "name": "USB-C Charging Cable",
+    "price": 4.99,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/61JBLA%2BDKLL._AC_SL1070_.jpg",
+    "category": "Accessories"
+  },
+  {
+    "id": "acc-2",
+    "name": "Replacement Pods (3 Pack)",
+    "price": 8.99,
+    "image": "https://tse3.mm.bing.net/th/id/OIP.MRFS-CxHgKTPRqXVkCmbkgHaHa?pid=Api&P=0&h=220",
+    "category": "Accessories"
+  },
+  {
+    "id": "acc-3",
+    "name": "Coil Pack (5 Pack)",
+    "price": 6.99,
+    "image": "https://tse2.mm.bing.net/th/id/OIP.1pPUaxDzpXws_vMkNFpPlwHaHa?pid=Api&P=0&h=220",
+    "category": "Accessories"
+  },
+  {
+    "id": "acc-4",
+    "name": "Battery Charger",
+    "price": 12.99,
+    "image": "https://tse3.mm.bing.net/th/id/OIP.rlPYTNH98YZWX2KNWTu2lgHaHa?pid=Api&P=0&h=220",
+    "category": "Accessories"
+  },
+  {
+    "id": "acc-5",
+    "name": "Carrying Case",
+    "price": 9.99,
+    "image": "https://tse3.mm.bing.net/th/id/OIP.kEg1WYw3_p-X6kQKeByn8wHaHa?pid=Api&P=0&h=220",
+    "category": "Accessories"
+  },
+  {
+    "id": "acc-6",
+    "name": "Replacement Glass Tube",
+    "price": 3.49,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.mRWla_YpEr-FPXrdK41_CQHaJL?pid=Api&P=0&h=220",
+    "category": "Accessories"
+  },
+  {
+    "id": "acc-7",
+    "name": "Vape Band (Pack of 5)",
+    "price": 2.99,
+    "image": "https://tse2.mm.bing.net/th/id/OIP.3P9Z3LmssPYrfUMRQB_DkwHaHa?pid=Api&P=0&h=220",
+    "category": "Accessories"
+  }
+]
+

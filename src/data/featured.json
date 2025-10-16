@@ -1,0 +1,35 @@
+[
+  {
+    "id": "dv-1",
+    "name": "Crystal Pro Max",
+    "price": 12.99,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.v-vcf5RlJ6-T-JsaO62OIwHaHa?pid=Api&P=0&h=220",
+    "category": "Disposable Vapes",
+    "featured": true
+  },
+  {
+    "id": "el-1",
+    "name": "Blue Raspberry E-liquid",
+    "price": 3.99,
+    "image": "https://www.vapemountain.com/user/products/large/blu-pro-tobacco-e-liquid-30ml-1.jpg",
+    "category": "E-liquids",
+    "featured": true
+  },
+  {
+    "id": "ps-1",
+    "name": "SMOK Nord 4",
+    "price": 29.99,
+    "image": "https://vapevine.ca/wp-content/uploads/2022/10/uwell-caliburn-x-pod-kit-canada.png",
+    "category": "Pod Systems",
+    "featured": true
+  },
+  {
+    "id": "vk-1",
+    "name": "Beginner Vape Kit",
+    "price": 34.99,
+    "image": "https://tse2.mm.bing.net/th/id/OIP.8oVnQDHsuLW8v5KmwXEUaQHaHa?pid=Api&P=0&h=220",
+    "category": "Starter Kits",
+    "featured": true
+  }
+]
+
