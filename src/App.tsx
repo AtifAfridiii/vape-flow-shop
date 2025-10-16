@@ -8,6 +8,7 @@ import Header from "@/components/layout/Header";
 import SinglePageLayout from "@/components/layout/SinglePageLayout";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
 import DiscountBanner from "@/components/ui/DiscountBanner";
+import ChatIcon from "@/components/ui/chatWith";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Sonner />
           <AgeVerificationModal />
           <DiscountBanner />
+          <ChatIcon />
           <div className="min-h-screen bg-background">
             <Header />
             <SinglePageLayout />
