@@ -7,7 +7,6 @@ import FeaturedProducts from '@/components/home/FeaturedProducts';
 import TrendingNow from '@/components/home/TrendingNow';
 import BestSelling from '@/components/home/BestSelling';
 import ProductGrid from '@/components/products/ProductGrid';
-import CartModal from '@/components/cart/CartModal';
 import CategorySidebar from '@/components/layout/CategorySidebar';
 import MobileNav from '@/components/layout/MobileNav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,7 +16,6 @@ import { Button } from '@/components/ui/button';
 const SinglePageLayout = () => {
   const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState('All Products');
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeSection, setActiveSection] = useState<'products' | 'about' | 'support'>('products');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
@@ -59,15 +57,7 @@ const SinglePageLayout = () => {
       : products.filter((p) => p.category === selectedCategory);
 
   const handleAddToCart = (product: Product) => {
-    setSelectedProduct(product);
-  };
-
-  const handleConfirmAdd = (quantity: number) => {
-    if (selectedProduct) {
-      for (let i = 0; i < quantity; i++) {
-        addToCart(selectedProduct);
-      }
-    }
+    addToCart(product);
   };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -561,12 +551,6 @@ const SinglePageLayout = () => {
           </div>
         </section>
       </main>
-
-      <CartModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-        onConfirm={handleConfirmAdd}
-      />
 
       <MobileNav activeSection={activeSection} onSectionChange={scrollToSection} />
     </>

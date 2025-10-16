@@ -27,7 +27,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       <CardFooter className="p-4 pt-0">
         <Button
           onClick={() => onAddToCart(product)}
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium transition-all duration-200 hover:shadow-lg"
+          className="w-full bg-primary hover:bg-emerald-600 text-primary-foreground hover:text-white text-sm font-medium transition-all duration-200 hover:shadow-lg"
         >
           <ShoppingCart className="h-4 w-4 mr-2 transition-transform duration-200 group-hover:scale-110" />
           Add to Cart

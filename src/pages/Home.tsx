@@ -5,13 +5,11 @@ import HeroCarousel from '@/components/home/HeroCarousel';
 import TrendingNow from '@/components/home/TrendingNow';
 import BestSelling from '@/components/home/BestSelling';
 import ProductGrid from '@/components/products/ProductGrid';
-import CartModal from '@/components/cart/CartModal';
 import CategorySidebar from '@/components/layout/CategorySidebar';
 
 const Home = () => {
   const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState('All Products');
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const filteredProducts =
     selectedCategory === 'All Products'
@@ -19,15 +17,7 @@ const Home = () => {
       : products.filter((p) => p.category === selectedCategory);
 
   const handleAddToCart = (product: Product) => {
-    setSelectedProduct(product);
-  };
-
-  const handleConfirmAdd = (quantity: number) => {
-    if (selectedProduct) {
-      for (let i = 0; i < quantity; i++) {
-        addToCart(selectedProduct);
-      }
-    }
+    addToCart(product);
   };
 
   return (
@@ -62,12 +52,6 @@ const Home = () => {
           />
         </div>
       </div>
-
-      <CartModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-        onConfirm={handleConfirmAdd}
-      />
     </>
   );
 };
