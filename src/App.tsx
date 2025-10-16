@@ -7,6 +7,7 @@ import { SidebarProvider } from "@/contexts/SidebarContext";
 import Header from "@/components/layout/Header";
 import SinglePageLayout from "@/components/layout/SinglePageLayout";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
+import DiscountBanner from "@/components/ui/DiscountBanner";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <AgeVerificationModal />
+          <DiscountBanner />
           <div className="min-h-screen bg-background">
             <Header />
             <SinglePageLayout />
