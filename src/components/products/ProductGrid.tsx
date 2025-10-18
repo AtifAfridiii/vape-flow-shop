@@ -20,7 +20,7 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
       {products.map((product, index) => (
         <div
           key={product.id}
-          className="animate-in fade-in slide-in-from-bottom-4 duration-500"
+          className="animate-in fade-in slide-in-from-bottom-4 duration-500 relative"
           style={{ animationDelay: `${index * 50}ms` }}
         >
           <ProductCard

@@ -7,7 +7,7 @@ import CartSidebar from '@/components/cart/CartSidebar';
 import { products } from '@/data/products';
 
 const Header = () => {
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, isOpen, setOverlayOrigin } = useSidebar();
   const { cartCount } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -86,10 +86,26 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={toggleSidebar}
+              onClick={(e) => {
+                // Compute button center for radial overlay origin
+                const rect = (e.currentTarget as HTMLButtonElement).getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                setOverlayOrigin(x, y);
+                toggleSidebar();
+              }}
+              aria-label="Navigation menu"
+              aria-expanded={isOpen}
               className="text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground flex-shrink-0"
             >
-              <Menu className="h-5 w-5" />
+              <div className="relative w-5 h-5 flex items-center justify-center">
+                <Menu
+                  className={`absolute transition-all duration-300 ${isOpen ? 'opacity-0 rotate-45 scale-0' : 'opacity-100 rotate-0 scale-100'}`}
+                />
+                <X
+                  className={`absolute transition-all duration-300 ${isOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-45 scale-0'}`}
+                />
+              </div>
             </Button>
 
             {/* Logo */}

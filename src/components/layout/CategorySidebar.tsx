@@ -9,7 +9,7 @@ interface CategorySidebarProps {
 }
 
 const CategorySidebar = ({ selectedCategory, onSelectCategory }: CategorySidebarProps) => {
-  const { isOpen, closeSidebar } = useSidebar();
+  const { isOpen, closeSidebar, overlayX, overlayY } = useSidebar();
 
   const handleCategoryClick = (category: string) => {
     onSelectCategory(category);
@@ -18,13 +18,46 @@ const CategorySidebar = ({ selectedCategory, onSelectCategory }: CategorySidebar
 
   return (
     <>
+      <style>{`
+      .hamburger-overlay-40 {
+        background: rgba(0,0,0,0.4);
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        clip-path: circle(0px at var(--hamburger-x, 60px) var(--hamburger-y, 60px));
+        transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
+        backdrop-filter: none;
+      }
+      .hamburger-overlay-40.open {
+        clip-path: circle(150% at var(--hamburger-x, 60px) var(--hamburger-y, 60px));
+        opacity: 1;
+        pointer-events: auto;
+      }
+      @media (max-width: 768px) {
+        .hamburger-overlay-40 {
+          clip-path: circle(0px at var(--hamburger-x, 30px) var(--hamburger-y, 30px));
+        }
+        .hamburger-overlay-40.open {
+          clip-path: circle(150% at var(--hamburger-x, 30px) var(--hamburger-y, 30px));
+        }
+      }
+      `}</style>
       {/* Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 animate-in fade-in"
-          onClick={closeSidebar}
-        />
-      )}
+      <div
+        className={`fixed inset-0 z-40 hamburger-overlay-40 ${isOpen ? 'open' : ''}`}
+        aria-hidden={!isOpen}
+        onClick={closeSidebar}
+        style={{
+          // Use viewport coordinates from header button center
+          // These are in CSS pixels relative to viewport, matching clip-path expectations
+          // Ensure the values are valid numbers
+          // Fallbacks are handled in CSS via var(..., defaults)
+          // @ts-ignore - CSSProperties allows custom properties via index signature in runtime
+          ['--hamburger-x' as any]: `${overlayX}px`,
+          ['--hamburger-y' as any]: `${overlayY}px`,
+        } as React.CSSProperties}
+      />
 
       {/* Sidebar */}
       <aside

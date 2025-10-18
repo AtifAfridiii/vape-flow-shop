@@ -6,6 +6,7 @@ import TrendingNow from '@/components/home/TrendingNow';
 import BestSelling from '@/components/home/BestSelling';
 import ProductGrid from '@/components/products/ProductGrid';
 import CategorySidebar from '@/components/layout/CategorySidebar';
+import { GlowingEffectShowcase } from '@/components/home/GlowingEffectShowcase';
 
 const Home = () => {
   const { addToCart } = useCart();
@@ -34,6 +35,9 @@ const Home = () => {
         <TrendingNow
           onAddToCart={handleAddToCart}
         />
+
+        {/* Glowing Effect Showcase */}
+        <GlowingEffectShowcase />
 
         {/* Best Selling Section */}
         <BestSelling

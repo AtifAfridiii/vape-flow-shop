@@ -12,6 +12,7 @@ import MobileNav from '@/components/layout/MobileNav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Phone, Clock, MapPin, Zap, Shield, Truck, Award, Star, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThreeDScrollTriggerContainer, ThreeDScrollTriggerRow } from '@/components/ThreeDScrollTrigger';
 
 const SinglePageLayout = () => {
   const { addToCart } = useCart();
@@ -341,46 +342,50 @@ const SinglePageLayout = () => {
           <div className="space-y-8">
             <h2 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">What Our Customers Say</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
-                    ))}
-                  </div>
-                  <p className="text-foreground mb-4 italic">"Excellent selection and fast delivery. The quality of products is outstanding. Highly recommended!"</p>
-                  <p className="font-semibold text-foreground">Sarah M.</p>
-                  <p className="text-sm text-muted-foreground">Verified Customer</p>
-                </CardContent>
-              </Card>
+            <ThreeDScrollTriggerContainer>
+              <ThreeDScrollTriggerRow baseVelocity={2} direction={1}>
+                <div className="flex w-max">
+                  <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group min-w-[350px] mr-8">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-1 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
+                        ))}
+                      </div>
+                      <p className="text-foreground mb-4 italic">"Excellent selection and fast delivery. The quality of products is outstanding. Highly recommended!"</p>
+                      <p className="font-semibold text-foreground">Sarah M.</p>
+                      <p className="text-sm text-muted-foreground">Verified Customer</p>
+                    </CardContent>
+                  </Card>
 
-              <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
-                    ))}
-                  </div>
-                  <p className="text-foreground mb-4 italic">"Great customer service and competitive prices. I've been a loyal customer for over a year now."</p>
-                  <p className="font-semibold text-foreground">James T.</p>
-                  <p className="text-sm text-muted-foreground">Verified Customer</p>
-                </CardContent>
-              </Card>
+                  <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group min-w-[350px] mr-8">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-1 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
+                        ))}
+                      </div>
+                      <p className="text-foreground mb-4 italic">"Great customer service and competitive prices. I've been a loyal customer for over a year now."</p>
+                      <p className="font-semibold text-foreground">James T.</p>
+                      <p className="text-sm text-muted-foreground">Verified Customer</p>
+                    </CardContent>
+                  </Card>
 
-              <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
-                    ))}
-                  </div>
-                  <p className="text-foreground mb-4 italic">"Best vape shop online. Always authentic products and the team is super helpful with recommendations."</p>
-                  <p className="font-semibold text-foreground">Emma L.</p>
-                  <p className="text-sm text-muted-foreground">Verified Customer</p>
-                </CardContent>
-              </Card>
-            </div>
+                  <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group min-w-[350px] mr-8">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-1 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
+                        ))}
+                      </div>
+                      <p className="text-foreground mb-4 italic">"Best vape shop online. Always authentic products and the team is super helpful with recommendations."</p>
+                      <p className="font-semibold text-foreground">Emma L.</p>
+                      <p className="text-sm text-muted-foreground">Verified Customer</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </ThreeDScrollTriggerRow>
+            </ThreeDScrollTriggerContainer>
           </div>
         </section>
 

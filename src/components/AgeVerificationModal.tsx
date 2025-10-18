@@ -35,26 +35,26 @@ const AgeVerificationModal = () => {
       <div className="fixed inset-0 z-40 bg-black/70" />
 
       {/* Modal Container */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="w-full max-w-md rounded-lg bg-card shadow-2xl">
+      <div className="fixed inset-0 z-50 flex items-end justify-center p-4 pb-20 overflow-y-auto sm:items-center">
+        <div className="w-full max-w-sm rounded-lg bg-card shadow-2xl mb-6 sm:mb-1 ">
           {/* Modal Content */}
-          <div className="flex flex-col items-center gap-6 p-8">
+          <div className="flex flex-col items-center gap-5 p-6">
             {/* Logo */}
             <img
               src="https://www.no1ukvapesupplier.co.uk/cdn/shop/files/logo_220x@2x.png?v=1722962006"
               alt="VapeShop Logo"
-              className="h-20 w-auto"
+              className="h-16 w-auto"
             />
 
             {/* Title */}
             <h2 className="text-center text-2xl font-bold text-foreground">
               You Must Be 18 or Over to Enter This Site
             </h2>
-
-            {/* Description */}
-            <p className="text-center text-sm text-muted-foreground">
-              By clicking "Yes", you confirm that you are 18 years of age or older and agree to our terms of service.
+            {/* Warning */}
+            <p className="text-center text-xs font-medium text-destructive">
+              This product contains nicotine. Nicotine is an addictive chemical and harmful to your health.
             </p>
+
 
             {/* Buttons */}
             <div className="flex w-full gap-4">
@@ -67,7 +67,7 @@ const AgeVerificationModal = () => {
               </Button>
               <Button
                 onClick={handleYes}
-                className="flex-1 bg-primary hover:bg-primary/90"
+                className="flex-1 bg-primary hover:bg-blue-700"
               >
                 Yes
               </Button>

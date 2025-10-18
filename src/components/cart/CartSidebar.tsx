@@ -3,6 +3,8 @@ import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { toast } from 'sonner';
+import SuccessResult from '@/components/SuccessResult';
+import { useState } from 'react';
 
 interface CartSidebarProps {
   open: boolean;
@@ -11,6 +13,7 @@ interface CartSidebarProps {
 
 const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
   const { cartItems, updateQuantity, removeFromCart, cartTotal, clearCart } = useCart();
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleRemoveFromCart = (itemId: string, itemName: string) => {
     removeFromCart(itemId);
@@ -72,6 +75,16 @@ const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
     );
   };
 
+  const handleProceedToCheckout = () => {
+    // Show success message
+    setShowSuccess(true);
+
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
+  };
+
   return (
     <Sheet open={open} onOpenChange={onClose}>
       <SheetContent side="right" className="w-full sm:max-w-md bg-card">
@@ -92,7 +105,11 @@ const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
         </SheetHeader>
 
         <div className="flex flex-col h-full pt-6">
-          {cartItems.length === 0 ? (
+          {showSuccess ? (
+            <div className="flex items-center justify-center h-full">
+              <SuccessResult />
+            </div>
+          ) : cartItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center flex-1 text-center animate-in fade-in duration-300">
               <h3 className="text-base font-semibold text-foreground mb-2">Your Cart is Empty</h3>
               <p className="text-sm text-muted-foreground">Add some products to get started!</p>
@@ -162,7 +179,10 @@ const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
                     £{cartTotal.toFixed(2)}
                   </span>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-all duration-200 hover:shadow-lg hover:scale-105">
+                <Button
+                  className="w-full bg-primary hover:bg-blue-600 text-primary-foreground font-medium transition-all duration-200 hover:shadow-lg hover:scale-105"
+                  onClick={handleProceedToCheckout}
+                >
                   Proceed to Checkout
                 </Button>
               </div>
