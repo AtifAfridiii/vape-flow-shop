@@ -1,4 +1,11 @@
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
+import podsImg from '../../images/pods.png';
+import coilImg from '../../images/coil.jpg';
+import vapesImg from '../../images/vapes.jpg';
+import liquidsImg from '../../images/flavour.jpg';
+import disposablesImg from '../../images/diss-vape.jpg';
+
+
 
 interface ProductCategoriesProps {
   onSelectCategory: (category: string) => void;
@@ -21,25 +28,25 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
       id: 'pods',
       name: 'Pods',
       displayName: 'Pod Systems',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.v0l1-V_bjA6Qf55o7C-OvQHaHa?pid=Api&P=0&h=220',
+  image: coilImg,
     },
     {
       id: 'vapes',
       name: 'Vapes',
       displayName: 'Disposable Vapes',
-      image: 'http://cloudsvapes.co.uk/cdn/shop/files/hayati-pro-ultra-15000-puffs-disposable-vape-pod-kit-pack-of-3-clouds-vapes-339202.jpg?v=1714029165',
+      image: vapesImg,
     },
     {
       id: 'liquids',
       name: 'E-Liquids',
       displayName: 'E-liquids',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.w5wyhUJ4vBh5kjrF_PGP_QHaHa?pid=Api&P=0&h=220',
+      image: liquidsImg,
     },
     {
       id: 'disposables',
       name: 'Disposables vapes',
       displayName: 'Disposables vapes',
-      image: 'https://cdn11.bigcommerce.com/s-hqim8tz8ly/images/stencil/2560w/products/65651/92417/Packspod_Disposable_Vape_-_5000_Puffs___41498.1684165666.jpg?c=1',
+      image: disposablesImg,
     },
   ];
 
@@ -54,74 +61,72 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* First column with 2 smaller cards */}
         <div className="flex flex-col gap-6">
-          <button
-            onClick={() => handleCategoryClick(categories[0].displayName)}
-            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
-            style={{ animationDelay: '0ms' }}
-          >
-            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${categories[0].image})` }}
-              ></div>
-            </Card>
-          </button>
-
-          <button
-            onClick={() => handleCategoryClick(categories[1].displayName)}
-            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
-            style={{ animationDelay: '100ms' }}
-          >
-            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${categories[1].image})` }}
-              ></div>
-            </Card>
-          </button>
+          {categories.slice(0, 2).map((cat, idx) => (
+            <button
+              key={cat.id}
+              onClick={() => handleCategoryClick(cat.displayName)}
+              aria-label={`View ${cat.displayName}`}
+              className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+              style={{ animationDelay: `${idx * 100}ms` }}
+            >
+              <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-64 md:h-72 rounded-lg">
+                <div className="relative w-full h-full">
+                  <img src={cat.image} alt={cat.name} className="w-full h-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div className="absolute left-4 bottom-4">
+                    <span className="inline-block bg-black/60 text-white text-sm md:text-base font-semibold px-3 py-1 rounded-full shadow-lg max-w-[85%] truncate block">
+                      {cat.displayName}
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </button>
+          ))}
         </div>
 
         {/* Second column with 2 smaller cards */}
         <div className="flex flex-col gap-6">
-          <button
-            onClick={() => handleCategoryClick(categories[2].displayName)}
-            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
-            style={{ animationDelay: '200ms' }}
-          >
-            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${categories[2].image})` }}
-              ></div>
-            </Card>
-          </button>
-
-          <button
-            onClick={() => handleCategoryClick(categories[3].displayName)}
-            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
-            style={{ animationDelay: '300ms' }}
-          >
-            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${categories[3].image})` }}
-              ></div>
-            </Card>
-          </button>
+          {categories.slice(2, 4).map((cat, idx) => (
+            <button
+              key={cat.id}
+              onClick={() => handleCategoryClick(cat.displayName)}
+              aria-label={`View ${cat.displayName}`}
+              className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+              style={{ animationDelay: `${(idx + 2) * 100}ms` }}
+            >
+              <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-64 md:h-72 rounded-lg">
+                <div className="relative w-full h-full">
+                  <img src={cat.image} alt={cat.name} className="w-full h-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div className="absolute left-4 bottom-4">
+                    <span className="inline-block bg-black/60 text-white text-sm md:text-base font-semibold px-3 py-1 rounded-full shadow-lg max-w-[85%] truncate block">
+                      {cat.displayName}
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </button>
+          ))}
         </div>
 
         {/* Third column with 1 large card spanning full height */}
         <div className="md:row-span-2">
           <button
-            onClick={() => handleCategoryClick(categories[0].displayName)}
+            onClick={() => handleCategoryClick("Pod Systems")}
+            aria-label="View Pod Systems"
             className="group w-full h-full transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
             style={{ animationDelay: '400ms' }}
           >
-            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-full min-h-[400px]">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${categories[0].image})` }}
-              ></div>
+            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-full min-h-[420px] rounded-lg">
+              <div className="relative w-full h-full">
+                <img src={podsImg} alt="Pod Systems" className="w-full h-full object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute left-6 bottom-6">
+                  <span className="inline-block bg-black/60 text-white text-lg font-semibold px-4 py-2 rounded-full shadow-lg truncate">
+                    Pod Systems
+                  </span>
+                </div>
+              </div>
             </Card>
           </button>
         </div>
