@@ -20,6 +20,26 @@ const SinglePageLayout = () => {
   const [activeSection, setActiveSection] = useState<'products' | 'about' | 'support'>('products');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true); // For fade animation
+  const [bannerMessages] = useState([
+    { icon: Zap, text: "Buy pack of 3 and get 1 flavour free!", color: "text-yellow-300" },
+    { icon: Star, text: "Limited time offer - Up to 30% off!", color: "text-yellow-300" },
+    { icon: Truck, text: "Free UK Delivery over £50", color: "text-yellow-300" }
+  ]);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  // Rotate banner messages with smooth fade transition
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsBannerVisible(false);
+      setTimeout(() => {
+        setCurrentMessageIndex(prev => (prev + 1) % bannerMessages.length);
+        setIsBannerVisible(true);
+      }, 500);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [bannerMessages.length]);
 
   const productsRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -82,52 +102,46 @@ const SinglePageLayout = () => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Rotate banner messages with smooth fade transition
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsBannerVisible(false);
+      setTimeout(() => {
+        setCurrentMessageIndex(prev => (prev + 1) % bannerMessages.length);
+        setIsBannerVisible(true);
+      }, 500);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [bannerMessages.length]);
+
   return (
     <>
-      {/* Navigation Tabs */}
-      <nav className="fixed top-16 left-0 right-0 z-30 bg-[#f2f3ae] border-b border-border shadow-md">
-        <div className="container mx-auto px-4 flex gap-0 h-14 items-center">
-          <button
-            onClick={() => scrollToSection('products')}
-            className={`px-4 py-3 text-sm font-medium border-b-2 transition-all duration-200 relative ${
-              activeSection === 'products'
-                ? 'text-primary border-primary'
-                : 'text-muted-foreground border-transparent hover:text-foreground hover:border-accent/50'
-            }`}
-          >
-            Products
-            {activeSection === 'products' && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent" />
-            )}
-          </button>
-          <button
-            onClick={() => scrollToSection('about')}
-            className={`px-4 py-3 text-sm font-medium border-b-2 transition-all duration-200 relative ${
-              activeSection === 'about'
-                ? 'text-primary border-primary'
-                : 'text-muted-foreground border-transparent hover:text-foreground hover:border-accent/50'
-            }`}
-          >
-            About
-            {activeSection === 'about' && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent" />
-            )}
-          </button>
-          <button
-            onClick={() => scrollToSection('support')}
-            className={`px-4 py-3 text-sm font-medium border-b-2 transition-all duration-200 relative ${
-              activeSection === 'support'
-                ? 'text-primary border-primary'
-                : 'text-muted-foreground border-transparent hover:text-foreground hover:border-accent/50'
-            }`}
-          >
-            Support
-            {activeSection === 'support' && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent" />
-            )}
-          </button>
+      {/* Enhanced Promotional Banner with Fade Animation */}
+      <div className={`fixed top-16 left-0 right-0 z-30 transition-all duration-500 ease-in-out ${
+        isBannerVisible ? 'opacity-80 bg-black translate-y-0' : 'opacity-100 bg-black -translate-y-full'
+      }`}>
+        <div className="border-b border-border shadow-xl bg-gradient-to-r from-primary/90 via-accent to-primary/90 text-primary-foreground">
+          <div className="container mx-auto px-4 py-3 flex items-center justify-center overflow-hidden">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                {(() => {
+                  const IconComponent = bannerMessages[currentMessageIndex].icon;
+                  return (
+                    <IconComponent
+                      className={`h-5 w-5 ${bannerMessages[currentMessageIndex].color} animate-bounce`}
+                      style={{ animationDelay: '0ms' }}
+                    />
+                  );
+                })()}
+                <span className="font-bold tracking-wide text-lg bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white">
+                  {bannerMessages[currentMessageIndex].text}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
+      </div>
 
       <CategorySidebar
         selectedCategory={selectedCategory}
@@ -170,6 +184,77 @@ const SinglePageLayout = () => {
                 products={filteredProducts}
                 onAddToCart={handleAddToCart}
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Popular Brands Section */}
+        <section className="scroll-mt-32 animate-in fade-in duration-500">
+          <div className="space-y-8">
+            <h2 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">
+              Popular Brands
+            </h2>
+
+            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 py-6">
+              {/* Brand 1 */}
+              <div className="group flex flex-col items-center">
+                <div className="bg-white dark:bg-gray-800 rounded-full p-3 md:p-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-accent">
+                  <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-accent font-bold text-lg md:text-xl shadow-inner">
+                    <img src="https://clipground.com/images/voopoo-logo.png" alt="" />
+                  </div>
+                </div>
+                <span className="mt-3 text-xs md:text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">Voopoo</span>
+              </div>
+
+              {/* Brand 2 */}
+              <div className="group flex flex-col items-center">
+                <div className="bg-white dark:bg-gray-800 rounded-full p-3 md:p-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-accent">
+                  <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-accent font-bold text-lg md:text-xl shadow-inner">
+                   <img src="http://images-platform.99static.com/8lrE8zJIJN-VzKU29osYyxPEFQc=/44x22:1965x1943/fit-in/99designs-contests-attachments/105/105300/attachment_105300734" alt="" />
+                  </div>
+                </div>
+                <span className="mt-3 text-xs md:text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">Leo vapes</span>
+              </div>
+
+              {/* Brand 3 */}
+              <div className="group flex flex-col items-center">
+                <div className="bg-white dark:bg-gray-800 rounded-full p-3 md:p-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-accent">
+                  <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-accent font-bold text-lg md:text-xl shadow-inner">
+                   <img src="http://www.ukvia.co.uk/wp-content/uploads/2018/12/SMOK_.png" alt="" />
+                  </div>
+                </div>
+                <span className="mt-3 text-xs md:text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">Smok nord</span>
+              </div>
+
+              {/* Brand 4 */}
+              <div className="group flex flex-col items-center">
+                <div className="bg-white dark:bg-gray-800 rounded-full p-3 md:p-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-accent">
+                  <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-accent font-bold text-lg md:text-xl shadow-inner">
+                   <img src="http://www.elitevapestore.co.uk/cdn/shop/files/elite_vape_store_logo_448e98d8-760c-43f1-9283-321995a4b55e_1200x1200.png?v=1727312136" alt="" />
+                  </div>
+                </div>
+                <span className="mt-3 text-xs md:text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">Elite Vapes</span>
+              </div>
+
+              {/* Brand 5 */}
+              <div className="group flex flex-col items-center">
+                <div className="bg-white dark:bg-gray-800 rounded-full p-3 md:p-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-accent">
+                  <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-accent font-bold text-lg md:text-xl shadow-inner">
+                 <img src="https://tse4.mm.bing.net/th/id/OIP.cXYNiZHG3xQl1j9hkCJF8gHaHa?pid=Api&P=0&h=220" alt="" />
+                  </div>
+                </div>
+                <span className="mt-3 text-xs md:text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">Caliburn</span>
+              </div>
+
+              {/* Brand 6 */}
+              <div className="group flex flex-col items-center">
+                <div className="bg-white dark:bg-gray-800 rounded-full p-3 md:p-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-accent">
+                  <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-accent font-bold text-lg md:text-xl shadow-inner">
+                   <img src="https://img1.picmix.com/output/stamp/normal/1/7/5/4/1294571_dd52b.png" alt="" />
+                  </div>
+                </div>
+                <span className="mt-3 text-xs md:text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">Vampire vapes</span>
+              </div>
             </div>
           </div>
         </section>

@@ -1,4 +1,3 @@
-import { Wind, Zap, Droplet } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 interface ProductCategoriesProps {
@@ -16,86 +15,119 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
       }, 100);
     }
   };
+
   const categories = [
     {
       id: 'pods',
       name: 'Pods',
       displayName: 'Pod Systems',
-      icon: Wind,
-      description: 'Compact and convenient',
-      color: 'from-blue-500/20 to-blue-600/20',
-      borderColor: 'border-blue-200/50',
-      iconColor: 'text-blue-600',
-      hoverBg: 'hover:from-blue-500/30 hover:to-blue-600/30',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.v0l1-V_bjA6Qf55o7C-OvQHaHa?pid=Api&P=0&h=220',
     },
     {
       id: 'vapes',
       name: 'Vapes',
       displayName: 'Disposable Vapes',
-      icon: Zap,
-      description: 'Ready to use instantly',
-      color: 'from-amber-500/20 to-amber-600/20',
-      borderColor: 'border-amber-200/50',
-      iconColor: 'text-amber-600',
-      hoverBg: 'hover:from-amber-500/30 hover:to-amber-600/30',
+      image: 'http://cloudsvapes.co.uk/cdn/shop/files/hayati-pro-ultra-15000-puffs-disposable-vape-pod-kit-pack-of-3-clouds-vapes-339202.jpg?v=1714029165',
     },
     {
       id: 'liquids',
       name: 'E-Liquids',
       displayName: 'E-liquids',
-      icon: Droplet,
-      description: 'Wide flavor selection',
-      color: 'from-pink-500/20 to-pink-600/20',
-      borderColor: 'border-pink-200/50',
-      iconColor: 'text-pink-600',
-      hoverBg: 'hover:from-pink-500/30 hover:to-pink-600/30',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.w5wyhUJ4vBh5kjrF_PGP_QHaHa?pid=Api&P=0&h=220',
+    },
+    {
+      id: 'disposables',
+      name: 'Disposables vapes',
+      displayName: 'Disposables vapes',
+      image: 'https://cdn11.bigcommerce.com/s-hqim8tz8ly/images/stencil/2560w/products/65651/92417/Packspod_Disposable_Vape_-_5000_Puffs___41498.1684165666.jpg?c=1',
     },
   ];
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+      {/* Added heading */}
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-foreground">
+        Shop by Categories
+      </h2>
+
+      {/* Masonry-style grid layout */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {categories.map((category, index) => {
-          const Icon = category.icon;
-          return (
-            <button
-              key={category.id}
-              onClick={() => handleCategoryClick(category.displayName)}
-              className="group text-left transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <Card className={`border-2 ${category.borderColor} shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden bg-gradient-to-br ${category.color} ${category.hoverBg}`}>
-                <CardContent className="p-6 md:p-8">
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    {/* Icon Container */}
-                    <div className="p-3 md:p-4 bg-white/50 group-hover:bg-white/70 rounded-lg transition-all duration-300 group-hover:scale-110">
-                      <Icon className={`h-8 w-8 md:h-10 md:w-10 ${category.iconColor} transition-transform duration-300 group-hover:rotate-12`} />
-                    </div>
+        {/* First column with 2 smaller cards */}
+        <div className="flex flex-col gap-6">
+          <button
+            onClick={() => handleCategoryClick(categories[0].displayName)}
+            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+            style={{ animationDelay: '0ms' }}
+          >
+            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${categories[0].image})` }}
+              ></div>
+            </Card>
+          </button>
 
-                    {/* Category Name */}
-                    <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
-                      {category.name}
-                    </h3>
+          <button
+            onClick={() => handleCategoryClick(categories[1].displayName)}
+            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+            style={{ animationDelay: '100ms' }}
+          >
+            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${categories[1].image})` }}
+              ></div>
+            </Card>
+          </button>
+        </div>
 
-                    {/* Description */}
-                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-200">
-                      {category.description}
-                    </p>
+        {/* Second column with 2 smaller cards */}
+        <div className="flex flex-col gap-6">
+          <button
+            onClick={() => handleCategoryClick(categories[2].displayName)}
+            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+            style={{ animationDelay: '200ms' }}
+          >
+            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${categories[2].image})` }}
+              ></div>
+            </Card>
+          </button>
 
-                    {/* Arrow Indicator */}
-                    <div className="pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs font-medium text-accent">Browse →</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </button>
-          );
-        })}
+          <button
+            onClick={() => handleCategoryClick(categories[3].displayName)}
+            className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+            style={{ animationDelay: '300ms' }}
+          >
+            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-48">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${categories[3].image})` }}
+              ></div>
+            </Card>
+          </button>
+        </div>
+
+        {/* Third column with 1 large card spanning full height */}
+        <div className="md:row-span-2">
+          <button
+            onClick={() => handleCategoryClick(categories[0].displayName)}
+            className="group w-full h-full transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+            style={{ animationDelay: '400ms' }}
+          >
+            <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] overflow-hidden h-full min-h-[400px]">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${categories[0].image})` }}
+              ></div>
+            </Card>
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default ProductCategories;
-
