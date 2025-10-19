@@ -6,6 +6,7 @@ import ProductCategories from '@/components/home/ProductCategories';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import TrendingNow from '@/components/home/TrendingNow';
 import BestSelling from '@/components/home/BestSelling';
+import OurLocation from '@/components/home/OurLocation';
 import ProductGrid from '@/components/products/ProductGrid';
 import CategorySidebar from '@/components/layout/CategorySidebar';
 import MobileNav from '@/components/layout/MobileNav';
@@ -17,7 +18,7 @@ import { ThreeDScrollTriggerContainer, ThreeDScrollTriggerRow } from '@/componen
 const SinglePageLayout = () => {
   const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState('All Products');
-  const [activeSection, setActiveSection] = useState<'products' | 'about' | 'support'>('products');
+  const [activeSection, setActiveSection] = useState<'products' | 'about' | 'support' | 'location'>('products');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
   const [isBannerVisible, setIsBannerVisible] = useState(true); // For fade animation
@@ -44,6 +45,7 @@ const SinglePageLayout = () => {
   const productsRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const supportRef = useRef<HTMLDivElement>(null);
+  const locationRef = useRef<HTMLDivElement>(null);
   const productGridRef = useRef<HTMLDivElement>(null);
 
   // Scroll detection to highlight active section
@@ -53,6 +55,7 @@ const SinglePageLayout = () => {
         { ref: productsRef, name: 'products' as const },
         { ref: aboutRef, name: 'about' as const },
         { ref: supportRef, name: 'support' as const },
+        { ref: locationRef, name: 'location' as const },
       ];
 
       // Find which section is currently in view
@@ -96,9 +99,12 @@ const SinglePageLayout = () => {
     }
   };
 
-  const scrollToSection = (section: 'products' | 'about' | 'support') => {
+  const scrollToSection = (section: 'products' | 'about' | 'support' | 'location') => {
     setActiveSection(section);
-    const ref = section === 'products' ? productsRef : section === 'about' ? aboutRef : supportRef;
+    const ref = section === 'products' ? productsRef :
+               section === 'about' ? aboutRef :
+               section === 'support' ? supportRef :
+               locationRef;
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -347,54 +353,36 @@ const SinglePageLayout = () => {
           <div className="space-y-8">
             <h2 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">Why Our Customers Love Us</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-primary/10 group-hover:bg-primary/20 rounded-lg transition-all duration-300 group-hover:scale-110">
-                      <Zap className="h-6 w-6 text-primary" />
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-200">Fast Delivery</h3>
-                  <p className="text-sm text-muted-foreground">Quick and reliable shipping to your doorstep within 2-3 business days</p>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="https://www.artisanvaporcompany.com/wp-content/uploads/2020/04/free-delivery.png"
+                  alt="Free Shipping"
+                  className="w-full max-w-[150px] h-auto object-contain mb-3"
+                />
+                <h3 className="font-semibold text-foreground">FREE SHIPPING</h3>
+                <p className="text-muted-foreground text-sm">Free Shipping over $100</p>
+              </div>
 
-              <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-primary/10 group-hover:bg-primary/20 rounded-lg transition-all duration-300 group-hover:scale-110">
-                      <Shield className="h-6 w-6 text-primary" />
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-200">100% Authentic</h3>
-                  <p className="text-sm text-muted-foreground">All products sourced directly from authorized distributors and manufacturers</p>
-                </CardContent>
-              </Card>
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="https://www.artisanvaporcompany.com/wp-content/uploads/2020/04/return-exchange.png"
+                  alt="Returns and Exchange"
+                  className="w-full max-w-[150px] h-auto object-contain mb-3"
+                />
+                <h3 className="font-semibold text-foreground">RETURNS AND EXCHANGE</h3>
+                <p className="text-muted-foreground text-sm">Return and Exchange</p>
+              </div>
 
-              <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-primary/10 group-hover:bg-primary/20 rounded-lg transition-all duration-300 group-hover:scale-110">
-                      <Award className="h-6 w-6 text-primary" />
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-200">Expert Support</h3>
-                  <p className="text-sm text-muted-foreground">Knowledgeable team ready to help with product recommendations and advice</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-primary/10 group-hover:bg-primary/20 rounded-lg transition-all duration-300 group-hover:scale-110">
-                      <Truck className="h-6 w-6 text-primary" />
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-200">Best Prices</h3>
-                  <p className="text-sm text-muted-foreground">Competitive pricing with regular promotions and exclusive member discounts</p>
-                </CardContent>
-              </Card>
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src="https://www.artisanvaporcompany.com/wp-content/uploads/2020/04/secure-shopping.png"
+                  alt="Secured Shopping"
+                  className="w-full max-w-[150px] h-auto object-contain mb-3"
+                />
+                <h3 className="font-semibold text-foreground">SECURED SHOPPING</h3>
+                <p className="text-muted-foreground text-sm">100% Satisfaction Guaranteed</p>
+              </div>
             </div>
           </div>
         </section>
@@ -472,6 +460,11 @@ const SinglePageLayout = () => {
               </ThreeDScrollTriggerRow>
             </ThreeDScrollTriggerContainer>
           </div>
+        </section>
+
+        {/* Our Location Section */}
+        <section ref={locationRef} className="scroll-mt-32 animate-in fade-in duration-500">
+          <OurLocation />
         </section>
 
         {/* Newsletter Section */}

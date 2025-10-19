@@ -1,11 +1,11 @@
-import { Home, ShoppingCart, Info, HelpCircle } from 'lucide-react';
+import { Home, ShoppingCart, Info, HelpCircle, MapPin } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useState } from 'react';
 import CartSidebar from '@/components/cart/CartSidebar';
 
 interface MobileNavProps {
-  activeSection: 'products' | 'about' | 'support';
-  onSectionChange: (section: 'products' | 'about' | 'support') => void;
+  activeSection: 'products' | 'about' | 'support' | 'location';
+  onSectionChange: (section: 'products' | 'about' | 'support' | 'location') => void;
 }
 
 const MobileNav = ({ activeSection, onSectionChange }: MobileNavProps) => {
@@ -16,6 +16,7 @@ const MobileNav = ({ activeSection, onSectionChange }: MobileNavProps) => {
     { id: 'products', icon: Home, label: 'Products' },
     { icon: ShoppingCart, label: 'Cart', badge: cartCount, onClick: () => setCartOpen(true) },
     { id: 'about', icon: Info, label: 'About' },
+    { id: 'location', icon: MapPin, label: 'Location' },
     { id: 'support', icon: HelpCircle, label: 'Support' },
   ];
 
@@ -47,7 +48,7 @@ const MobileNav = ({ activeSection, onSectionChange }: MobileNavProps) => {
             return (
               <button
                 key={id}
-                onClick={() => onSectionChange(id as 'products' | 'about' | 'support')}
+                onClick={() => onSectionChange(id as 'products' | 'about' | 'support' | 'location')}
                 className={`flex flex-col items-center justify-center flex-1 h-full relative transition-colors ${
                   activeSection === id ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
                 }`}

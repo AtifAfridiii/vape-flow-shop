@@ -23,6 +23,7 @@ interface CartContextType {
   clearCart: () => void;
   cartTotal: number;
   cartCount: number;
+  isProductInCart: (productId: string) => boolean; // Added this method
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -71,6 +72,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
+  // New method to check if a product is in the cart
+  const isProductInCart = (productId: string) => {
+    return cartItems.some(item => item.id === productId);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -81,6 +87,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         clearCart,
         cartTotal,
         cartCount,
+        isProductInCart, // Added this method
       }}
     >
       {children}
