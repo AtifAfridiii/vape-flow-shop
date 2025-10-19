@@ -33,24 +33,22 @@ const TrendingNow = ({ onAddToCart }: TrendingNowProps) => {
         {trendingProducts.map((product, index) => (
           <div
             key={product.id}
-            className="animate-in fade-in slide-in-from-bottom-4 duration-500"
+            className="animate-in fade-in slide-in-from-bottom-4 duration-500 relative"
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            {/* Trending Badge */}
-            <div className="relative">
-              <div className="absolute -top-3 -right-3 z-10">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary rounded-full blur-md opacity-50 animate-pulse" />
-                  <div className="relative bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    🔥 Trending
-                  </div>
+            {/* Trending Badge positioned on top of the card */}
+            <div className="absolute -top-3 -right-3 z-20">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary rounded-full blur-md opacity-50 animate-pulse" />
+                <div className="relative bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                  🔥 Trending
                 </div>
               </div>
-              <ProductCard
-                product={product}
-                onAddToCart={onAddToCart}
-              />
             </div>
+            <ProductCard
+              product={product}
+              onAddToCart={onAddToCart}
+            />
           </div>
         ))}
       </div>
@@ -68,4 +66,3 @@ const TrendingNow = ({ onAddToCart }: TrendingNowProps) => {
 };
 
 export default TrendingNow;
-
