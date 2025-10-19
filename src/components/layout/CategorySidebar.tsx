@@ -61,7 +61,7 @@ const CategorySidebar = ({ selectedCategory, onSelectCategory }: CategorySidebar
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-card border-r border-border z-50 transform transition-all duration-300 shadow-xl ${
+        className={`fixed top-0 left-0 h-full w-64 bg-card border-r border-border z-50 transform transition-all duration-300 shadow-xl overflow-x-hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >

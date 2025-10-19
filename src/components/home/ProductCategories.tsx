@@ -27,8 +27,8 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
     {
       id: 'pods',
       name: 'Pods',
-      displayName: 'Pod Systems',
-  image: coilImg,
+      displayName: 'Accessories',
+      image: coilImg,
     },
     {
       id: 'vapes',

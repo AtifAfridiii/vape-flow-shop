@@ -57,7 +57,7 @@ export function ThreeDScrollTriggerContainer({
 
   return (
     <ThreeDScrollTriggerContext.Provider value={velocityFactor}>
-      <div className={cn("relative w-full", className)} {...props}>
+      <div className={cn("relative w-full overflow-hidden", className)} {...props}>
         {children}
       </div>
     </ThreeDScrollTriggerContext.Provider>
@@ -180,7 +180,7 @@ function ThreeDScrollTriggerRowImpl({
     >
       <motion.div
         className="inline-flex will-change-transform transform-gpu"
-        style={{ transform: xTransform }}
+        style={{ transform: xTransform, contain: "layout style" }}
       >
         {Array.from({ length: numCopies }).map((_, i) => (
           <div

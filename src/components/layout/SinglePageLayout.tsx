@@ -154,11 +154,13 @@ const SinglePageLayout = () => {
         onSelectCategory={setSelectedCategory}
       />
 
-      <main className="container mx-auto px-4 pt-32 pb-20 space-y-12">
+      <main className="container mx-auto px-4 pt-4 pb-20 space-y-12">
         {/* Products Section */}
         <section ref={productsRef} className="scroll-mt-32 animate-in fade-in duration-500">
           <div className="space-y-8">
-            <HeroCarousel />
+            <div className="relative -ml-4 -mr-4">
+              <HeroCarousel />
+            </div>
 
             {/* Product Categories */}
             <ProductCategories
@@ -201,7 +203,7 @@ const SinglePageLayout = () => {
               Popular Brands
             </h2>
 
-            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 py-6">
+            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 py-6 overflow-hidden">
               {/* Brand 1 */}
               <div className="group flex flex-col items-center">
                 <div className="bg-white dark:bg-gray-800 rounded-full p-3 md:p-4 shadow-lg group-hover:shadow-2xl transition-all duration-300 border-2 border-transparent group-hover:border-accent">
@@ -443,6 +445,47 @@ const SinglePageLayout = () => {
                       <p className="text-sm text-muted-foreground">Verified Customer</p>
                     </CardContent>
                   </Card>
+
+                   <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group min-w-[350px] mr-8">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-1 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
+                        ))}
+                      </div>
+                      <p className="text-foreground mb-4 italic">"Great products using from the last 2 years and in future i will be their customer with out any doubt ."</p>
+                      <p className="font-semibold text-foreground">George menk.</p>
+                      <p className="text-sm text-muted-foreground">Verified Customer</p>
+                    </CardContent>
+                  </Card>
+
+        <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group min-w-[350px] mr-8">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-1 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
+                        ))}
+                      </div>
+                      <p className="text-foreground mb-4 italic">"I have been a customer for a long time and have always been satisfied with the quality and service."</p>
+                      <p className="font-semibold text-foreground">Emilly watson</p>
+                      <p className="text-sm text-muted-foreground">Verified Customer</p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group min-w-[350px] mr-8">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-1 mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-accent text-accent transition-all duration-300 group-hover:scale-110" style={{ transitionDelay: `${i * 50}ms` }} />
+                        ))}
+                      </div>
+                      <p className="text-foreground mb-4 italic">" I have been a customer for a long time and have always been satisfied with the quality and service."</p>
+                      <p className="font-semibold text-foreground">Recca Quanine </p>
+                      <p className="text-sm text-muted-foreground">Verified Customer</p>
+                    </CardContent>
+                  </Card>
+
+
 
                   <Card className="border-border shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] group min-w-[350px] mr-8">
                     <CardContent className="p-6">
