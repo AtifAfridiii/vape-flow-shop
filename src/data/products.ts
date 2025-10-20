@@ -4,7 +4,7 @@ import { Product } from '@/contexts/CartContext';
 import { disposableVapes as disposableVapesData } from './disposable-vapes';
 import { eLiquids as eLiquidsData } from './e-liquids';
 import podSystemsData from './pod-systems';
-import accessoriesData from './accessories.json';
+import { accessories as accessoriesData } from './accessories';
 import { trendingProducts as trendingData } from './trending';
 import { bestSellingProducts as bestSellingData } from './best-selling';
 import featuredData from './featured';
@@ -23,7 +23,7 @@ const convertToProducts = (data: any[]): Product[] => {
 const disposableVapes = convertToProducts(disposableVapesData);
 const eLiquids = convertToProducts(eLiquidsData);
 const podSystems = convertToProducts(podSystemsData);
-const accessories = convertToProducts(accessoriesData);
+const accessories = accessoriesData;
 const vapeKits = vapeKitsData;
 
 
