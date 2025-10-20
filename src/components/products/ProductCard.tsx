@@ -1,9 +1,11 @@
-import { ShoppingCart, Check } from 'lucide-react';
+import { ShoppingCart, Check, Eye } from 'lucide-react';
 import { Product, useCart } from '@/contexts/CartContext'; // Updated import
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { toast } from 'sonner';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { useState } from 'react';
+import ProductDetailModal from '@/components/products/ProductDetailModal';
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +15,7 @@ interface ProductCardProps {
 const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
   const { isProductInCart } = useCart(); // Use the new method from CartContext
   const productInCart = isProductInCart(product.id); // Check if product is in cart
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAddToCart = () => {
     // Only add to cart if not already in cart
@@ -36,6 +39,14 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
     }
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="relative">
       <GlowingEffect
@@ -55,6 +66,15 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+
+          {/* Eye Icon Button */}
+          <button
+            onClick={openModal}
+            className="absolute top-2 right-2 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20"
+            aria-label="View product details"
+          >
+            <Eye className="h-4 w-4 text-white" />
+          </button>
         </div>
         <CardContent className="p-4">
           <h3 className="font-semibold text-foreground mb-1 text-sm line-clamp-2 group-hover:text-accent transition-colors duration-200">{product.name}</h3>
@@ -85,6 +105,12 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
           </Button>
         </CardFooter>
       </Card>
+
+      {/* Product Detail Modal */}
+      <ProductDetailModal
+        product={isModalOpen ? product : null}
+        onClose={closeModal}
+      />
     </div>
   );
 };

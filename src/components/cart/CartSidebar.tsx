@@ -172,7 +172,7 @@ const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
                 ))}
               </div>
 
-              <div className="border-t border-border pt-4 mt-4 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-300">
+              <div className="border-t pb-10 border-border pt-4 mt-4 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-300">
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-primary/5 to-accent/5 border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                   <span className="font-semibold text-foreground">Total</span>
                   <span className="text-lg font-bold text-primary">

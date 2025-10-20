@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import hero1 from "@/../src/proImages/img1/hero1.jpg"
 
 const slides = [
   {
     id: 1,
-    image: 'https://vape.hk/wp-content/uploads/2024/05/smokey-2__79144.original.jpg',
+    image: hero1,
     title: 'Premium Disposable Vapes',
     subtitle: 'Convenience meets quality',
   },

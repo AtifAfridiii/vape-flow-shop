@@ -1,13 +1,14 @@
 import { Product } from '@/contexts/CartContext';
 
 // Import JSON data files
-import disposableVapesData from './disposable-vapes.json';
-import eLiquidsData from './e-liquids.json';
-import podSystemsData from './pod-systems.json';
+import { disposableVapes as disposableVapesData } from './disposable-vapes';
+import { eLiquids as eLiquidsData } from './e-liquids';
+import podSystemsData from './pod-systems';
 import accessoriesData from './accessories.json';
-import trendingData from './trending.json';
-import bestSellingData from './best-selling.json';
-import featuredData from './featured.json';
+import { trendingProducts as trendingData } from './trending';
+import { bestSellingProducts as bestSellingData } from './best-selling';
+import featuredData from './featured';
+import { vapeKits as vapeKitsData } from './vape-kits';
 
 // Helper function to convert JSON data to Product objects
 // Images are now stored as URLs in the JSON files
@@ -23,6 +24,7 @@ const disposableVapes = convertToProducts(disposableVapesData);
 const eLiquids = convertToProducts(eLiquidsData);
 const podSystems = convertToProducts(podSystemsData);
 const accessories = convertToProducts(accessoriesData);
+const vapeKits = vapeKitsData;
 
 
 // Combine all products
@@ -31,6 +33,7 @@ export const products: Product[] = [
   ...eLiquids,
   ...podSystems,
   ...accessories,
+  ...vapeKits,
 
 ];
 
@@ -42,8 +45,8 @@ export const accessoriesProducts = accessories;
 
 
 // Export section-specific products
-export const trendingProducts = convertToProducts(trendingData);
-export const bestSellingProducts = convertToProducts(bestSellingData);
+export const trendingProducts = trendingData;
+export const bestSellingProducts = bestSellingData;
 export const featuredProducts = convertToProducts(featuredData);
 
 export const categories = [
@@ -52,4 +55,5 @@ export const categories = [
   'Pod Systems',
   'E-liquids',
   'Accessories',
+  'Starter Kits',
 ];

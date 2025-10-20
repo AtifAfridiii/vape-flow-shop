@@ -47,10 +47,10 @@ files.forEach((file) => {
       if (!product.image) errors.push(`${file}[${index}]: Missing 'image'`);
       if (!product.category) errors.push(`${file}[${index}]: Missing 'category'`);
 
-      // Check image is a URL
-      if (product.image && !product.image.match(/^https?:\/\//)) {
+      // Check image is a URL or local path
+      if (product.image && !product.image.match(/^https?:\/\//) && !product.image.match(/^\.(\/|\\)|^(\/|\\)/)) {
         errors.push(
-          `${file}[${index}]: Image is not a URL: "${product.image}"`
+          `${file}[${index}]: Image is not a valid URL or local path: "${product.image}"`
         );
       }
 
@@ -93,15 +93,15 @@ if (ids.size === allProducts.length) {
   console.log(`✓ All ${allProducts.length} product IDs are unique`);
 }
 
-// Check image URLs
-console.log('\n🖼️  Checking Image URLs...');
+// Check image URLs or local paths
+console.log('\n🖼️  Checking Image URLs or Local Paths...');
 let validImageCount = 0;
 allProducts.forEach((product) => {
-  if (product.image && product.image.match(/^https?:\/\//)) {
+  if (product.image && (product.image.match(/^https?:\/\//) || product.image.match(/^\.(\/|\\)|^(\/|\\)/))) {
     validImageCount++;
   }
 });
-console.log(`✓ ${validImageCount}/${allProducts.length} products have valid image URLs`);
+console.log(`✓ ${validImageCount}/${allProducts.length} products have valid image URLs or local paths`);
 
 // Check for products with special flags
 console.log('\n🏷️  Special Product Flags:');
