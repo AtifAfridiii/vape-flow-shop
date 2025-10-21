@@ -5,7 +5,8 @@
     "price": 12.99,
     "image": "https://tse4.mm.bing.net/th/id/OIP.v-vcf5RlJ6-T-JsaO62OIwHaHa?pid=Api&P=0&h=220",
     "category": "Disposable Vapes",
-    "featured": true
+    "featured": true,
+    "originalPrice": 18.49
   },
   {
     "id": "el-1",
@@ -13,7 +14,8 @@
     "price": 3.99,
     "image": "https://www.vapemountain.com/user/products/large/blu-pro-tobacco-e-liquid-30ml-1.jpg",
     "category": "E-liquids",
-    "featured": true
+    "featured": true,
+    "originalPrice": 5.2
   },
   {
     "id": "ps-1",
@@ -21,7 +23,8 @@
     "price": 29.99,
     "image": "https://vapevine.ca/wp-content/uploads/2022/10/uwell-caliburn-x-pod-kit-canada.png",
     "category": "Pod Systems",
-    "featured": true
+    "featured": true,
+    "originalPrice": 40.71
   },
   {
     "id": "vk-1",
@@ -29,7 +32,7 @@
     "price": 34.99,
     "image": "https://tse2.mm.bing.net/th/id/OIP.8oVnQDHsuLW8v5KmwXEUaQHaHa?pid=Api&P=0&h=220",
     "category": "Starter Kits",
-    "featured": true
+    "featured": true,
+    "originalPrice": 49.5
   }
 ]
-

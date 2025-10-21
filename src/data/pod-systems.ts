@@ -14,6 +14,8 @@ export interface PodSystem {
   category: string;
   featured?: boolean;
   bestSeller?: boolean;
+  originalPrice?: number;
+  salePercentage?: number;
   trending?: boolean;
 }
 
@@ -22,6 +24,8 @@ export const podSystemsData: PodSystem[] = [
     id: "ps-1",
     name: "SMOK Nord 4",
     price: 29.99,
+    originalPrice: 39.99,
+    salePercentage: 50,
     image: pod1,
     category: "Pod Systems",
     featured: true,
@@ -39,6 +43,8 @@ export const podSystemsData: PodSystem[] = [
     id: "ps-3",
     name: "Voopoo Drag S",
     price: 34.99,
+     originalPrice: 39.99,
+    salePercentage: 5,
     image: pod3,
     category: "Pod Systems"
   },
@@ -46,6 +52,8 @@ export const podSystemsData: PodSystem[] = [
     id: "ps-4",
     name: "Pack of 3 Pods",
     price: 99.99,
+    originalPrice: 120.99,
+    salePercentage: 30,
     image: pod4,
     category: "Pod Systems",
     bestSeller: true
@@ -68,6 +76,8 @@ export const podSystemsData: PodSystem[] = [
     id: "ps-7",
     name: "GeekVape L200",
     price: 39.99,
+     originalPrice: 59.99,
+    salePercentage: 25,
     image: pod7,
     category: "Pod Systems",
     trending: true

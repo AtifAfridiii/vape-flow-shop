@@ -6,7 +6,8 @@
     "image": "https://tse4.mm.bing.net/th/id/OIP.v0l1-V_bjA6Qf55o7C-OvQHaHa?pid=Api&P=0&h=220",
     "category": "Pod Systems",
     "featured": true,
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 40.25
   },
   {
     "id": "ps-2",
@@ -14,14 +15,16 @@
     "price": 24.99,
     "image": "https://www.e-cigclouds.co.uk/wp-content/uploads/2024/08/stone-gray-uwell-caliburn-g3-pro-pod-kit.jpg",
     "category": "Pod Systems",
-    "trending": true
+    "trending": true,
+    "originalPrice": 30.83
   },
   {
     "id": "ps-3",
     "name": "Voopoo Drag S",
     "price": 34.99,
     "image": "http://ecigone.co.uk/cdn/shop/files/oxva-nexlim-pod-vape-kit_bd312d5d-8d13-4d95-8af5-b0ecaeeddeb2.webp?v=1733169386",
-    "category": "Pod Systems"
+    "category": "Pod Systems",
+    "originalPrice": 46.35
   },
   {
     "id": "ps-4",
@@ -29,21 +32,23 @@
     "price": 39.99,
     "image": "https://vape.co.uk/wp-content/uploads/2024/07/Box-of-10-Template-bm600-28-2024-08-20T101918.679-1024x1024.png",
     "category": "Pod Systems",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 47.95
   },
   {
     "id": "ps-5",
     "name": "Geekvape Aegis Pod",
     "price": 32.99,
     "image": "https://cdn.shopify.com/s/files/1/0507/3708/6660/products/GreenPurple.png?v=1681296709",
-    "category": "Pod Systems"
+    "category": "Pod Systems",
+    "originalPrice": 48.09
   },
   {
     "id": "ps-6",
     "name": "Lost Vape Orion",
     "price": 44.99,
     "image": "https://www.eqdropship.co.uk/3309-large_default/elf-bar-elfa-prefilled-pod-kit.jpg",
-    "category": "Pod Systems"
+    "category": "Pod Systems",
+    "originalPrice": 50.48
   }
 ]
-

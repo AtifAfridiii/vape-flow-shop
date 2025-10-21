@@ -16,6 +16,9 @@ export interface Accessory {
   featured?: boolean;
   bestSeller?: boolean;
   trending?: boolean;
+   originalPrice?: number;
+  salePercentage?: number;
+  
 }
 
 export const accessories: Accessory[] = [
@@ -23,6 +26,8 @@ export const accessories: Accessory[] = [
     "id": "acc-1",
     "name": "Calliburn tank",
     "price": 4.99,
+    originalPrice: 10,
+    salePercentage: 60,
     "image": coil1,
     "category": "Accessories"
   },
@@ -37,6 +42,8 @@ export const accessories: Accessory[] = [
     "id": "acc-3",
     "name": "Thunder coil",
     "price": 6.99,
+    originalPrice: 10,
+    salePercentage: 40,
     "image": coil3,
     "category": "Accessories"
   },

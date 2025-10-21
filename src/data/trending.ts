@@ -20,6 +20,8 @@ export interface TrendingProduct {
   image: string;
   category: string;
   trending?: boolean;
+  originalPrice?: number;
+  salePercentage?: number;
 }
 
 export const trendingProducts: TrendingProduct[] = [
@@ -27,6 +29,8 @@ export const trendingProducts: TrendingProduct[] = [
     "id": "dv-2",
     "name": "Thunder Vape",
     "price": 5.99,
+    "originalPrice": 11.99,
+    "salePercentage": 50,
     "image": disposableVape1,
     "category": "Disposable Vapes",
     "trending": true
@@ -51,14 +55,18 @@ export const trendingProducts: TrendingProduct[] = [
     "id": "el-3",
     "name": "Dragon Fruit E-liquid",
     "price": 3.99,
+    "originalPrice": 5.99,  
+    "salePercentage": 20,  
     "image": eLiquid2,
     "category": "E-liquids",
-    "trending": true
+    "trending": true,
   },
   {
     "id": "ps-2",
     "name": "Vaporesso XROS 3",
     "price": 24.99,
+    "originalPrice": 34.99,
+    "salePercentage": 30,
     "image": podSystem1,
     "category": "Pod Systems",
     "trending": true
@@ -67,6 +75,8 @@ export const trendingProducts: TrendingProduct[] = [
     "id": "vk-2",
     "name": "Premium Pod Kit",
     "price": 44.99,
+    "originalPrice": 55.99,  
+    "salePercentage":10, 
     "image": starterKit1,
     "category": "Starter Kits",
     "trending": true

@@ -1,10 +1,14 @@
 import { Trash2, Plus, Minus, X, Trash, AlertCircle, Check } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { toast } from 'sonner';
 import SuccessResult from '@/components/SuccessResult';
 import { useState } from 'react';
+import AuthModal, { AuthTab } from '@/components/AuthModal';
+import PaymentModal from '@/components/PaymentModal';
+import PaymentSuccessModal from '@/components/PaymentSuccessModal';
 
 interface CartSidebarProps {
   open: boolean;
@@ -13,7 +17,12 @@ interface CartSidebarProps {
 
 const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
   const { cartItems, updateQuantity, removeFromCart, cartTotal, clearCart } = useCart();
+  const { isAuthenticated } = useAuth();
   const [showSuccess, setShowSuccess] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authTab, setAuthTab] = useState<AuthTab>('login');
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [paymentSuccessModalOpen, setPaymentSuccessModalOpen] = useState(false);
 
   const handleRemoveFromCart = (itemId: string, itemName: string) => {
     removeFromCart(itemId);
@@ -76,13 +85,35 @@ const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
   };
 
   const handleProceedToCheckout = () => {
-    // Show success message
-    setShowSuccess(true);
+    // Check if user is authenticated
+    if (!isAuthenticated) {
+      // Show auth modal if not logged in
+      setAuthModalOpen(true);
+      setAuthTab('login');
+    } else {
+      // Show payment modal if logged in
+      setPaymentModalOpen(true);
+    }
+  };
 
-    // Hide success message after 3 seconds
+  const handleAuthSuccess = () => {
+    // After successful authentication, open payment modal
+    setAuthModalOpen(false);
+    // Small delay for smooth transition
     setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
+      setPaymentModalOpen(true);
+    }, 300);
+  };
+
+  const handlePaymentSuccess = () => {
+    // Show success modal
+    setPaymentSuccessModalOpen(true);
+    // Clear cart
+    clearCart();
+    // Close cart sidebar
+    setTimeout(() => {
+      onClose();
+    }, 500);
   };
 
   return (
@@ -190,6 +221,28 @@ const CartSidebar = ({ open, onClose }: CartSidebarProps) => {
           )}
         </div>
       </SheetContent>
+      {/* Auth Modal */}
+      <AuthModal
+        open={authModalOpen}
+        onOpenChange={setAuthModalOpen}
+        tab={authTab}
+        onTabChange={setAuthTab}
+        onAuthSuccess={handleAuthSuccess}
+      />
+
+      {/* Payment Modal */}
+      <PaymentModal
+        open={paymentModalOpen}
+        onOpenChange={setPaymentModalOpen}
+        onPaymentSuccess={handlePaymentSuccess}
+        totalAmount={cartTotal}
+      />
+
+      {/* Payment Success Modal */}
+      <PaymentSuccessModal
+        open={paymentSuccessModalOpen}
+        onOpenChange={setPaymentSuccessModalOpen}
+      />
     </Sheet>
   );
 };

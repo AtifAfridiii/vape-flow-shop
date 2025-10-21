@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CartProvider } from "@/contexts/CartContext";
 import { SidebarProvider } from "@/contexts/SidebarContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Header from "@/components/layout/Header";
 import SinglePageLayout from "@/components/layout/SinglePageLayout";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
@@ -26,8 +27,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <CartProvider>
-          <SidebarProvider>
+        <AuthProvider>
+          <CartProvider>
+            <SidebarProvider>
             <Toaster />
             <Sonner />
             <AgeVerificationModal />
@@ -38,8 +40,9 @@ const App = () => {
               <Header />
               <SinglePageLayout />
             </div>
-          </SidebarProvider>
-        </CartProvider>
+            </SidebarProvider>
+          </CartProvider>
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

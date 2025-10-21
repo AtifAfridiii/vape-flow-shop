@@ -5,7 +5,8 @@
     "price": 12.99,
     "image": "https://tse4.mm.bing.net/th/id/OIP.FXaRQ1Iah7VvAKPOMs7RbAHaHa?pid=Api&P=0&h=220",
     "category": "Disposable Vapes",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 14.68
   },
   {
     "id": "dv-3",
@@ -13,7 +14,8 @@
     "price": 5.49,
     "image": "https://tse1.mm.bing.net/th/id/OIP.u2sMhNGDcUV8LA7aqjPLwQHaHa?pid=Api&P=0&h=220",
     "category": "Disposable Vapes",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 8.08
   },
   {
     "id": "el-2",
@@ -21,7 +23,8 @@
     "price": 3.99,
     "image": "https://tse2.mm.bing.net/th/id/OIP.gAlkoVx6nyVy_vRYEAEZEAHaHa?pid=Api&P=0&h=220",
     "category": "E-liquids",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 5.08
   },
   {
     "id": "el-5",
@@ -29,7 +32,8 @@
     "price": 3.99,
     "image": "https://m.media-amazon.com/images/I/61VZ2WXpeTL._AC_SX569_.jpg",
     "category": "E-liquids",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 5.84
   },
   {
     "id": "ps-1",
@@ -37,7 +41,8 @@
     "price": 29.99,
     "image": "https://tse2.mm.bing.net/th/id/OIP.DEau3joL_xmlE_zXhklM3QHaHa?pid=Api&P=0&h=220",
     "category": "Pod Systems",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 41.94
   },
   {
     "id": "ps-4",
@@ -45,7 +50,8 @@
     "price": 39.99,
     "image": "https://tse1.mm.bing.net/th/id/OIP.YSzrMRBFi9wxQsEELEH1CAHaHa?pid=Api&P=0&h=220",
     "category": "Pod Systems",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 45.88
   },
   {
     "id": "vk-1",
@@ -53,7 +59,8 @@
     "price": 34.99,
     "image": "https://tse1.mm.bing.net/th/id/OIP.AvKZPuUmmSgWcSDy7NCg6wHaHa?pid=Api&P=0&h=220",
     "category": "Starter Kits",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 41.77
   },
   {
     "id": "vk-3",
@@ -61,7 +68,7 @@
     "price": 54.99,
     "image": "https://tse3.mm.bing.net/th/id/OIP.NRyizWkDHvqsOi71K_fAdwHaJW?pid=Api&P=0&h=220",
     "category": "Starter Kits",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 68.63
   }
 ]
-

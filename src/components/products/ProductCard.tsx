@@ -67,6 +67,15 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
 
+          {/* SALE Badge */}
+          {product.originalPrice && product.salePercentage && (
+            <div className="absolute top-2 left-2 z-20">
+              <div className="bg-red-600 text-white px-2.5 py-1 rounded-md shadow-lg text-xs font-bold uppercase">
+                Sale {product.salePercentage}% Off
+              </div>
+            </div>
+          )}
+
           {/* Eye Icon Button */}
           <button
             onClick={openModal}
@@ -79,7 +88,24 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         <CardContent className="p-4">
           <h3 className="font-semibold text-foreground mb-1 text-sm line-clamp-2 group-hover:text-accent transition-colors duration-200">{product.name}</h3>
           <p className="text-xs text-muted-foreground mb-3">{product.category}</p>
-          <p className="text-base font-semibold text-primary">£{product.price.toFixed(2)}</p>
+          
+          {/* Price Display */}
+          <div className="flex items-center gap-2 flex-wrap">
+            {product.originalPrice ? (
+              <>
+                <span className="text-sm text-muted-foreground line-through decoration-red-500 decoration-2">
+                  £{product.originalPrice.toFixed(2)}
+                </span>
+                <span className="text-lg font-bold text-red-600">
+                  £{product.price.toFixed(2)}
+                </span>
+              </>
+            ) : (
+              <span className="text-base font-semibold text-primary">
+                £{product.price.toFixed(2)}
+              </span>
+            )}
+          </div>
         </CardContent>
         <CardFooter className="p-4 pt-0">
           <Button

@@ -10,6 +10,8 @@ export interface FeaturedProduct {
   image: string;
   category: string;
   featured?: boolean;
+  originalPrice?: number;
+  salePercentage?: number;
 }
 
 export const featuredData: FeaturedProduct[] = [
@@ -17,6 +19,8 @@ export const featuredData: FeaturedProduct[] = [
     id: "dv-1",
     name: "Smok nord pro",
     price: 12.99,
+    originalPrice: 29.99,
+    salePercentage: 8,
     image: vape1,
     category: "Disposable Vapes",
     featured: true
@@ -33,6 +37,8 @@ export const featuredData: FeaturedProduct[] = [
     id: "ps-1",
     name: "oxva pod",
     price: 29.99,
+    originalPrice: 45.99,
+    salePercentage: 15,
     image: smokNord,
     category: "Pod Systems",
     featured: true

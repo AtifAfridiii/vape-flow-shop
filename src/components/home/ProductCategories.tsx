@@ -14,6 +14,11 @@ interface ProductCategoriesProps {
 
 const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCategoriesProps) => {
   const handleCategoryClick = (displayName: string) => {
+    // Don't navigate for "Disposables vapes" category
+    if (displayName === 'Disposables vapes') {
+      return;
+    }
+    
     onSelectCategory(displayName);
     // Trigger smooth scroll to products section after a brief delay
     if (onNavigateToProducts) {

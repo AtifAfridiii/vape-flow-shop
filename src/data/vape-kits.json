@@ -6,7 +6,8 @@
     "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
     "category": "Starter Kits",
     "featured": true,
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 43.98
   },
   {
     "id": "vk-2",
@@ -14,7 +15,8 @@
     "price": 44.99,
     "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
     "category": "Starter Kits",
-    "trending": true
+    "trending": true,
+    "originalPrice": 59.48
   },
   {
     "id": "vk-3",
@@ -22,28 +24,31 @@
     "price": 54.99,
     "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
     "category": "Starter Kits",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 75.24
   },
   {
     "id": "vk-4",
     "name": "Complete Starter Bundle",
     "price": 49.99,
     "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
-    "category": "Starter Kits"
+    "category": "Starter Kits",
+    "originalPrice": 73.07
   },
   {
     "id": "vk-5",
     "name": "Professional Vaping Kit",
     "price": 64.99,
     "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
-    "category": "Starter Kits"
+    "category": "Starter Kits",
+    "originalPrice": 71.75
   },
   {
     "id": "vk-6",
     "name": "Compact Travel Kit",
     "price": 39.99,
     "image": "https://images.unsplash.com/photo-1578432291840-8d1c51dc1cac?w=400&h=400&fit=crop",
-    "category": "Starter Kits"
+    "category": "Starter Kits",
+    "originalPrice": 57.79
   }
 ]
-

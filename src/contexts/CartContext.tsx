@@ -6,9 +6,12 @@ export interface Product {
   price: number;
   image: string;
   category: string;
+  subcategory?: string;
   featured?: boolean;
   trending?: boolean;
   bestSeller?: boolean;
+  originalPrice?: number;
+  salePercentage?: number;
 }
 
 export interface CartItem extends Product {

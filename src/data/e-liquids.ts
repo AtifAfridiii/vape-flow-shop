@@ -15,6 +15,8 @@ export interface ELiquid {
   category: string;
   featured?: boolean;
   bestSeller?: boolean;
+  originalPrice?: number;
+  salePercentage?: number;
   trending?: boolean;
 }
 
@@ -23,6 +25,8 @@ export const eLiquids: ELiquid[] = [
     "id": "el-1",
     "name": "Tokyo Pine Apple",
     "price": 3.99,
+    originalPrice: 10.,
+    salePercentage: 7,
     "image": e1,
     "category": "E-liquids",
     "featured": true,
@@ -32,6 +36,8 @@ export const eLiquids: ELiquid[] = [
     "id": "el-2",
     "name": "Tokyo watermelon",
     "price": 3.99,
+    originalPrice: 9.99,
+    salePercentage: 6,
     "image": e2,
     "category": "E-liquids",
     "bestSeller": true
@@ -55,6 +61,8 @@ export const eLiquids: ELiquid[] = [
     "id": "el-5",
     "name": "Tokyo melon",
     "price": 3.99,
+    originalPrice: 8.99,
+    salePercentage: 67,
     "image": e5,
     "category": "E-liquids",
     "bestSeller": true
@@ -77,6 +85,8 @@ export const eLiquids: ELiquid[] = [
     "id": "el-8",
     "name": "Tokyo strawberry",
     "price": 3.99,
+    originalPrice: 5.99,
+    salePercentage: 2,
     "image": e8,
     "category": "E-liquids"
   }

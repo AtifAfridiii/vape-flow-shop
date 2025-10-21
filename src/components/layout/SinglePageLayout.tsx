@@ -8,6 +8,7 @@ import TrendingNow from '@/components/home/TrendingNow';
 import BestSelling from '@/components/home/BestSelling';
 import OurLocation from '@/components/home/OurLocation';
 import ProductGrid from '@/components/products/ProductGrid';
+import SubcategoryGrid from '@/components/products/SubcategoryGrid';
 import CategorySidebar from '@/components/layout/CategorySidebar';
 import MobileNav from '@/components/layout/MobileNav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,10 +16,77 @@ import { Mail, Phone, Clock, MapPin, Zap, Shield, Truck, Award, Star, Send, Chec
 import { Button } from '@/components/ui/button';
 import { ThreeDScrollTriggerContainer, ThreeDScrollTriggerRow } from '@/components/ThreeDScrollTrigger';
 
+interface CategoryStructure {
+  name: string;
+  subcategories: string[];
+}
+
+// Define the category structure to match the sidebar
+const categoryStructure: CategoryStructure[] = [
+  {
+    name: 'All Products',
+    subcategories: []
+  },
+  {
+    name: 'Disposable Vapes',
+    subcategories: [
+      'Fruit Flavors',
+      'Menthol',
+      'Tobacco',
+      'Dessert',
+      '500-1000 Puffs',
+      '1500+ Puffs'
+    ]
+  },
+  {
+    name: 'Pod Systems',
+    subcategories: [
+      'SMOK Nord',
+      'Vaporesso XROS',
+      'Voopoo Drag',
+      'Lost Vape Orion',
+      'GeekVape'
+    ]
+  },
+  {
+    name: 'E-liquids',
+    subcategories: [
+      'Nicotine Salt',
+      'Freebase',
+      'Shortfill',
+      'Nicotine Free',
+      'Fruit Flavors',
+      'Menthol'
+    ]
+  },
+  {
+    name: 'Accessories',
+    subcategories: [
+      'Coils',
+      'Replacement Parts',
+      'Batteries',
+      'Chargers',
+      'Tanks'
+    ]
+  },
+  {
+    name: 'Starter Kits',
+    subcategories: [
+      'Beginner Kits',
+      'Intermediate Kits',
+      'Advanced Kits',
+      'Pod Kits',
+      'Box Mods'
+    ]
+  }
+];
+
 const SinglePageLayout = () => {
   const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState('All Products');
   const [activeSection, setActiveSection] = useState<'products' | 'about' | 'support' | 'location'>('products');
+  const [isSubcategorySelected, setIsSubcategorySelected] = useState(false);
+  const [isCategoryFromMainSection, setIsCategoryFromMainSection] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
   const [isBannerVisible, setIsBannerVisible] = useState(true); // For fade animation
@@ -75,10 +143,58 @@ const SinglePageLayout = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const filteredProducts =
-    selectedCategory === 'All Products'
-      ? products
-      : products.filter((p) => p.category === selectedCategory);
+  // Determine if the selected category is a subcategory
+  const isSubcategory = (category: string) => {
+    return categoryStructure.some(cat => cat.subcategories.includes(category));
+  };
+
+  // Find the parent category of a subcategory
+  const getParentCategory = (subcategory: string) => {
+    const parent = categoryStructure.find(cat => cat.subcategories.includes(subcategory));
+    return parent ? parent.name : 'All Products';
+  };
+
+  // Filter products based on selected category
+  const filteredProducts = (() => {
+    if (selectedCategory === 'All Products') {
+      return products;
+    }
+
+    // If it's a subcategory, filter by the parent category and the subcategory
+    if (isSubcategorySelected) {
+      const parentCategory = getParentCategory(selectedCategory);
+      return products.filter(
+        (p) => p.category === parentCategory && p.subcategory === selectedCategory
+      );
+    }
+
+    // Otherwise, filter by the main category
+    return products.filter((p) => p.category === selectedCategory);
+  })();
+
+  // Handle category selection from sidebar
+  const handleSelectCategory = (category: string, isSubcategoryParam: boolean = false) => {
+    setSelectedCategory(category);
+    setIsSubcategorySelected(isSubcategoryParam);
+    setIsCategoryFromMainSection(false); // Reset flag when selecting from sidebar
+
+    // Scroll to product grid when category is selected
+    setTimeout(() => {
+      scrollToProductGrid();
+    }, 100);
+  };
+
+  // Handle category selection from main product categories section
+  const handleCategoryFromMainSection = (category: string) => {
+    setSelectedCategory(category);
+    setIsSubcategorySelected(false);
+    setIsCategoryFromMainSection(true); // Set flag when selecting from main section
+
+    // Scroll to product grid when category is selected
+    setTimeout(() => {
+      scrollToProductGrid();
+    }, 100);
+  };
 
   const handleAddToCart = (product: Product) => {
     addToCart(product);
@@ -151,7 +267,7 @@ const SinglePageLayout = () => {
 
       <CategorySidebar
         selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
+        onSelectCategory={handleSelectCategory}
       />
 
       <main className="container mx-auto px-4 pt-4 pb-20 space-y-12">
@@ -164,7 +280,7 @@ const SinglePageLayout = () => {
 
             {/* Product Categories */}
             <ProductCategories
-              onSelectCategory={setSelectedCategory}
+              onSelectCategory={handleCategoryFromMainSection}
               onNavigateToProducts={scrollToProductGrid}
             />
 
@@ -188,10 +304,29 @@ const SinglePageLayout = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-6 pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">
                 {selectedCategory}
               </h2>
-              <ProductGrid
-                products={filteredProducts}
-                onAddToCart={handleAddToCart}
-              />
+              {/* Show ProductGrid for categories selected from main section, SubcategoryGrid for sidebar selections with subcategories */}
+              {isCategoryFromMainSection || selectedCategory === 'All Products' ? (
+                <ProductGrid
+                  key={`grid-${selectedCategory}`}
+                  products={filteredProducts}
+                  onAddToCart={handleAddToCart}
+                />
+              ) : selectedCategory !== 'All Products' &&
+                (!isSubcategorySelected && categoryStructure.some(cat => cat.name === selectedCategory && cat.subcategories.length > 0) ||
+                 isSubcategorySelected) ? (
+                <SubcategoryGrid
+                  key={`subgrid-${selectedCategory}`}
+                  products={filteredProducts}
+                  onAddToCart={handleAddToCart}
+                  hideSubcategoryHeading={isSubcategorySelected} // Hide heading when a specific subcategory is selected
+                />
+              ) : (
+                <ProductGrid
+                  key={`grid-fallback-${selectedCategory}`}
+                  products={filteredProducts}
+                  onAddToCart={handleAddToCart}
+                />
+              )}
             </div>
           </div>
         </section>
@@ -681,4 +816,3 @@ const SinglePageLayout = () => {
 };
 
 export default SinglePageLayout;
-

@@ -5,21 +5,11 @@ import vape4 from '../proImages/img1/vape4.jpg';
 import vape5 from '../proImages/img1/vape5.jpg';
 import vape6 from '../proImages/img1/vape6.jpg';
 import vape7 from '../proImages/img1/vape7.jpg';
-
 import e1 from '../proImages/liquids/e1.jpg';
 import e2 from '../proImages/liquids/e2.jpg';
-import e3 from '../proImages/liquids/e3.jpg';
-import e4 from '../proImages/liquids/e4.jpg';
-import e5 from '../proImages/liquids/e5.jpg';
-import e6 from '../proImages/liquids/e6.jpg';
-
 import pod1 from '../proImages/pod/pod1.jpg';
 import pod2 from '../proImages/pod/pod2.jpg';
-import pod3 from '../proImages/pod/pod3.jpg';
-import pod4 from '../proImages/pod/pod4.jpg';
-import pod5 from '../proImages/pod/pod5.jpg';
-import pod6 from '../proImages/pod/pod6.jpg';
-import pod7 from '../proImages/pod/pod7.jpg';
+
 
 
 export interface VapeKit {

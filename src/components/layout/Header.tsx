@@ -1,14 +1,25 @@
-import { Menu, ShoppingCart, Search, X, Loader } from 'lucide-react';
+import { Menu, ShoppingCart, Search, X, Loader, User, LogOut, ChevronDown } from 'lucide-react';
 import { useSidebar } from '@/contexts/SidebarContext';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import CartSidebar from '@/components/cart/CartSidebar';
 import { products } from '@/data/products';
+import { useAuth } from '@/contexts/AuthContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { toast } from 'sonner';
 
 const Header = () => {
   const { toggleSidebar, isOpen, setOverlayOrigin } = useSidebar();
   const { cartCount } = useCart();
+  const { user, isAuthenticated, logout } = useAuth();
   const [cartOpen, setCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -195,8 +206,83 @@ const Header = () => {
             </form>
           </div>
 
-          {/* Right: Search Icon (Mobile) and Cart */}
+          {/* Right: User Menu, Search Icon (Mobile) and Cart */}
           <div className="flex items-center gap-2 flex-shrink-0">
+            {/* User Menu - Desktop */}
+            {isAuthenticated && user && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="hidden md:flex items-center gap-2 text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="bg-primary/10 p-1.5 rounded-full">
+                        <User className="h-4 w-4 text-primary" />
+                      </div>
+                      <span className="text-sm font-medium">{user.name}</span>
+                      <ChevronDown className="h-4 w-4" />
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium">{user.name}</p>
+                      <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={() => {
+                      logout();
+                      toast.success('Logged out successfully');
+                    }}
+                    className="cursor-pointer text-destructive focus:text-destructive"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
+
+            {/* User Icon - Mobile */}
+            {isAuthenticated && user && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="md:hidden text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground"
+                  >
+                    <div className="bg-primary/10 p-1 rounded-full">
+                      <User className="h-4 w-4 text-primary" />
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium">{user.name}</p>
+                      <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={() => {
+                      logout();
+                      toast.success('Logged out successfully');
+                    }}
+                    className="cursor-pointer text-destructive focus:text-destructive"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
+
             <Button
               variant="ghost"
               size="icon"

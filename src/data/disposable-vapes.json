@@ -6,7 +6,8 @@
     "image": "http://cloudsvapes.co.uk/cdn/shop/files/hayati-pro-ultra-15000-puffs-disposable-vape-pod-kit-pack-of-3-clouds-vapes-339202.jpg?v=1714029165",
     "category": "Disposable Vapes",
     "featured": true,
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 17.92
   },
   {
     "id": "dv-2",
@@ -14,7 +15,8 @@
     "price": 5.99,
     "image": "https://cdn11.bigcommerce.com/s-hqim8tz8ly/images/stencil/2560w/products/65651/92417/Packspod_Disposable_Vape_-_5000_Puffs___41498.1684165666.jpg?c=1",
     "category": "Disposable Vapes",
-    "trending": true
+    "trending": true,
+    "originalPrice": 8.46
   },
   {
     "id": "dv-3",
@@ -22,7 +24,8 @@
     "price": 5.49,
     "image": "https://vaperoyalty.com/wp-content/uploads/2024/05/Geek-Bar-Pulse-Disposable-Vape-15000-Puffs.jpg",
     "category": "Disposable Vapes",
-    "bestSeller": true
+    "bestSeller": true,
+    "originalPrice": 7.95
   },
   {
     "id": "dv-4",
@@ -30,35 +33,39 @@
     "price": 8.99,
     "image": "https://res.cloudinary.com/www180smokeca/image/upload/c_lpad,dpr_2.0,f_auto,g_auto:subject,q_auto/v1/media/catalog/product/v/u/vuse_go_xl_pods_device_bundle_03.jpg",
     "category": "Disposable Vapes",
-    "trending": true
+    "trending": true,
+    "originalPrice": 13.33
   },
   {
     "id": "dv-5",
     "name": "Hayati Pro Max",
     "price": 9.99,
     "image": "https://www.vuse.com/gb/en/media/catalog/product/v/u/vuse-go-edition-01-blue-raspberry-20mg-2d.jpg?auto=webp&format=pjpg&width=320&height=400&fit=cover",
-    "category": "Disposable Vapes"
+    "category": "Disposable Vapes",
+    "originalPrice": 13.59
   },
   {
     "id": "dv-6",
     "name": "Aroma King 3500",
     "price": 7.49,
     "image": "https://tse2.mm.bing.net/th/id/OIP.aWc3Z2u_DXueNL6jc9fgkAHaHa?pid=Api&P=0&h=220",
-    "category": "Disposable Vapes"
+    "category": "Disposable Vapes",
+    "originalPrice": 11.21
   },
   {
     "id": "dv-7",
     "name": "Vape Pen 5000",
     "price": 10.99,
     "image": "https://tse2.mm.bing.net/th/id/OIP.mo_JbYowM9W7_FIvH6766AHaD4?pid=Api&P=0&h=220",
-    "category": "Disposable Vapes"
+    "category": "Disposable Vapes",
+    "originalPrice": 15.98
   },
   {
     "id": "dv-8",
     "name": "Puff Bar Plus",
     "price": 6.49,
     "image": "https://tse3.mm.bing.net/th/id/OIP.7lWdBvJpUmAnbGrtDBIzrQHaHa?pid=Api&P=0&h=220",
-    "category": "Disposable Vapes"
+    "category": "Disposable Vapes",
+    "originalPrice": 9.41
   }
 ]
-
