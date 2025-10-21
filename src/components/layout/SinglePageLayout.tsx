@@ -55,8 +55,9 @@ const categoryStructure: CategoryStructure[] = [
       'Freebase',
       'Shortfill',
       'Nicotine Free',
-      'Fruit Flavors',
-      'Menthol'
+      '10 mg',
+      '30 mg',
+      '50 mg'
     ]
   },
   {

@@ -13,8 +13,9 @@ export { eLiquidsNicSalt } from './e-liquids-nic-salt';
 export { eLiquidsFreebase } from './e-liquids-freebase';
 export { eLiquidsShortfill } from './e-liquids-shortfill';
 export { eLiquidsNicotineFree } from './e-liquids-nicotine-free';
-export { eLiquidsFruitFlavors } from './e-liquids-fruit-flavors';
-export { eLiquidsMenthol } from './e-liquids-menthol';
+export { eLiquids10mg } from './e-liquids-10mg';
+export { eLiquids30mg } from './e-liquids-30mg';
+export { eLiquids50mg } from './e-liquids-50mg';
 
 // Pod Systems subcategories
 export { podSystemsSmokNord } from './pod-systems-smok-nord';

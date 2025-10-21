@@ -24,8 +24,9 @@ import {
   eLiquidsFreebase,
   eLiquidsShortfill,
   eLiquidsNicotineFree,
-  eLiquidsFruitFlavors,
-  eLiquidsMenthol,
+  eLiquids10mg,
+  eLiquids30mg,
+  eLiquids50mg,
   // Pod Systems subcategories
   podSystemsSmokNord,
   podSystemsVaporessoXros,
@@ -76,8 +77,9 @@ const eLiquidsNicSaltItems = convertToProducts(eLiquidsNicSalt);
 const eLiquidsFreebaseItems = convertToProducts(eLiquidsFreebase);
 const eLiquidsShortfillItems = convertToProducts(eLiquidsShortfill);
 const eLiquidsNicotineFreeItems = convertToProducts(eLiquidsNicotineFree);
-const eLiquidsFruitFlavorsItems = convertToProducts(eLiquidsFruitFlavors);
-const eLiquidsMentholItems = convertToProducts(eLiquidsMenthol);
+const eLiquids10mgItems = convertToProducts(eLiquids10mg);
+const eLiquids30mgItems = convertToProducts(eLiquids30mg);
+const eLiquids50mgItems = convertToProducts(eLiquids50mg);
 
 // Pod Systems subcategories
 const podSystemsSmokNordItems = convertToProducts(podSystemsSmokNord);
@@ -119,8 +121,9 @@ export const products: Product[] = [
   ...eLiquidsFreebaseItems,
   ...eLiquidsShortfillItems,
   ...eLiquidsNicotineFreeItems,
-  ...eLiquidsFruitFlavorsItems,
-  ...eLiquidsMentholItems,
+  ...eLiquids10mgItems,
+  ...eLiquids30mgItems,
+  ...eLiquids50mgItems,
   // Pod Systems subcategories
   ...podSystemsSmokNordItems,
   ...podSystemsVaporessoXrosItems,
@@ -161,8 +164,9 @@ export const eLiquidsNicSaltProducts = eLiquidsNicSaltItems;
 export const eLiquidsFreebaseProducts = eLiquidsFreebaseItems;
 export const eLiquidsShortfillProducts = eLiquidsShortfillItems;
 export const eLiquidsNicotineFreeProducts = eLiquidsNicotineFreeItems;
-export const eLiquidsFruitFlavorsProducts = eLiquidsFruitFlavorsItems;
-export const eLiquidsMentholProducts = eLiquidsMentholItems;
+export const eLiquids10mgProducts = eLiquids10mgItems;
+export const eLiquids30mgProducts = eLiquids30mgItems;
+export const eLiquids50mgProducts = eLiquids50mgItems;
 
 // Pod Systems subcategories
 export const podSystemsSmokNordProducts = podSystemsSmokNordItems;

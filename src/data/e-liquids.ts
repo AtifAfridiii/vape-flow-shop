@@ -13,6 +13,10 @@ export interface ELiquid {
   price: number;
   image: string;
   category: string;
+  subcategory?: string;
+  nicotineStrength?: string;
+  vgPgRatio?: string;
+  flavorProfile?: string;
   featured?: boolean;
   bestSeller?: boolean;
   originalPrice?: number;
@@ -29,6 +33,8 @@ export const eLiquids: ELiquid[] = [
     salePercentage: 7,
     "image": e1,
     "category": "E-liquids",
+    "subcategory": "10 mg",
+    "nicotineStrength": "10mg",
     "featured": true,
     "trending": true
   },
@@ -40,6 +46,8 @@ export const eLiquids: ELiquid[] = [
     salePercentage: 6,
     "image": e2,
     "category": "E-liquids",
+    "subcategory": "10 mg",
+    "nicotineStrength": "10mg",
     "bestSeller": true
   },
   {
@@ -48,6 +56,8 @@ export const eLiquids: ELiquid[] = [
     "price": 3.99,
     "image": e3,
     "category": "E-liquids",
+    "subcategory": "30 mg",
+    "nicotineStrength": "30mg",
     "trending": true
   },
   {
@@ -55,7 +65,11 @@ export const eLiquids: ELiquid[] = [
     "name": "Tokyo passion fruit",
     "price": 4.49,
     "image": e4,
-    "category": "E-liquids"
+    "category": "E-liquids",
+    "subcategory": "30 mg",
+    "nicotineStrength": "30mg",
+    "vgPgRatio": "50/50",
+    "flavorProfile": "Fruit"
   },
   {
     "id": "el-5",
@@ -65,6 +79,8 @@ export const eLiquids: ELiquid[] = [
     salePercentage: 67,
     "image": e5,
     "category": "E-liquids",
+    "subcategory": "50 mg",
+    "nicotineStrength": "50mg",
     "bestSeller": true
   },
   {
@@ -72,22 +88,94 @@ export const eLiquids: ELiquid[] = [
     "name": "Tokyo peach watermelon",
     "price": 3.99,
     "image": e6,
-    "category": "E-liquids"
+    "category": "E-liquids",
+    "subcategory": "10 mg",
+    "nicotineStrength": "10mg"
   },
   {
     "id": "el-7",
     "name": "Tokyo starwberry kiwi",
     "price": 4.29,
     "image": e7,
-    "category": "E-liquids"
+    "category": "E-liquids",
+    "subcategory": "30 mg",
+    "nicotineStrength": "30mg"
   },
   {
-    "id": "el-8",
-    "name": "Tokyo strawberry",
+    "id": "el-9",
+    "name": "Tokyo Blueberry Ice",
+    "price": 4.49,
+    "image": e5,
+    "category": "E-liquids",
+    "subcategory": "10 mg",
+    "nicotineStrength": "10mg",
+    "featured": true
+  },
+  {
+    "id": "el-10",
+    "name": "Tokyo Mint Fresh",
+    "price": 3.89,
+    "image": e6,
+    "category": "E-liquids",
+    "subcategory": "30 mg",
+    "nicotineStrength": "30mg",
+    "trending": true
+  },
+  {
+    "id": "el-11",
+    "name": "Tokyo Grape Soda",
+    "price": 4.29,
+    "image": e7,
+    "category": "E-liquids",
+    "subcategory": "50 mg",
+    "nicotineStrength": "50mg",
+    "bestSeller": true
+  },
+  {
+    "id": "el-12",
+    "name": "Tokyo Tropical Punch",
     "price": 3.99,
-    originalPrice: 5.99,
-    salePercentage: 2,
     "image": e8,
-    "category": "E-liquids"
+    "category": "E-liquids",
+    "subcategory": "10 mg",
+    "nicotineStrength": "10mg"
+  },
+  {
+    "id": "el-13",
+    "name": "Tokyo Berry Blast",
+    "price": 4.19,
+    "image": e1,
+    "category": "E-liquids",
+    "subcategory": "30 mg",
+    "nicotineStrength": "30mg"
+  },
+  {
+    "id": "el-14",
+    "name": "Tokyo Cool Menthol",
+    "price": 3.79,
+    "image": e2,
+    "category": "E-liquids",
+    "subcategory": "50 mg",
+    "nicotineStrength": "50mg",
+    "trending": true
+  },
+  {
+    "id": "el-15",
+    "name": "Tokyo Citrus Twist",
+    "price": 4.39,
+    "image": e3,
+    "category": "E-liquids",
+    "subcategory": "10 mg",
+    "nicotineStrength": "10mg",
+    "featured": true
+  },
+  {
+    "id": "el-16",
+    "name": "Tokyo Vanilla Dream",
+    "price": 3.99,
+    "image": e4,
+    "category": "E-liquids",
+    "subcategory": "30 mg",
+    "nicotineStrength": "30mg"
   }
 ];
