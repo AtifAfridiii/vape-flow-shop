@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+// Using native radio inputs for compatibility and simpler click behavior
 import { CreditCard, Truck, Loader2 } from 'lucide-react';
 
 interface PaymentModalProps {
@@ -112,13 +112,9 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
           {/* Payment Method Selection */}
           <div className="space-y-4">
             <Label className="text-base font-semibold">Select Payment Method</Label>
-            <RadioGroup
-              value={paymentMethod}
-              onValueChange={(value) => setPaymentMethod(value as PaymentMethod)}
-              className="space-y-3"
-            >
+            <div className="space-y-3">
               {/* Cash on Delivery */}
-              <div
+              <label
                 className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md ${
                   paymentMethod === 'cod'
                     ? 'border-primary bg-primary/5 shadow-md'
@@ -126,11 +122,15 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
                 }`}
                 onClick={() => setPaymentMethod('cod')}
               >
-                <RadioGroupItem value="cod" id="cod" />
-                <Label
-                  htmlFor="cod"
-                  className="flex items-center gap-3 cursor-pointer flex-1"
-                >
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="cod"
+                  checked={paymentMethod === 'cod'}
+                  onChange={() => setPaymentMethod('cod')}
+                  className="h-4 w-4 text-primary border-primary"
+                />
+                <div className="flex items-center gap-3 cursor-pointer flex-1">
                   <div className="p-2 bg-primary/10 rounded-full">
                     <Truck className="h-5 w-5 text-primary" />
                   </div>
@@ -138,11 +138,11 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
                     <p className="font-semibold text-foreground">Cash on Delivery</p>
                     <p className="text-xs text-muted-foreground">Pay when you receive your order</p>
                   </div>
-                </Label>
-              </div>
+                </div>
+              </label>
 
               {/* Card Payment */}
-              <div
+              <label
                 className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all duration-200 hover:shadow-md ${
                   paymentMethod === 'card'
                     ? 'border-primary bg-primary/5 shadow-md'
@@ -150,11 +150,15 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
                 }`}
                 onClick={() => setPaymentMethod('card')}
               >
-                <RadioGroupItem value="card" id="card" />
-                <Label
-                  htmlFor="card"
-                  className="flex items-center gap-3 cursor-pointer flex-1"
-                >
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="card"
+                  checked={paymentMethod === 'card'}
+                  onChange={() => setPaymentMethod('card')}
+                  className="h-4 w-4 text-primary border-primary"
+                />
+                <div className="flex items-center gap-3 cursor-pointer flex-1">
                   <div className="p-2 bg-primary/10 rounded-full">
                     <CreditCard className="h-5 w-5 text-primary" />
                   </div>
@@ -162,9 +166,9 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
                     <p className="font-semibold text-foreground">Card Payment</p>
                     <p className="text-xs text-muted-foreground">Pay securely with your card</p>
                   </div>
-                </Label>
-              </div>
-            </RadioGroup>
+                </div>
+              </label>
+            </div>
           </div>
 
           {/* Card Details Form */}
