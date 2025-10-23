@@ -1,9 +1,9 @@
 import { Card } from '@/components/ui/card';
-import podsImg from '../../images/pods.png';
-import coilImg from '../../images/coil.jpg';
-import vapesImg from '../../images/vapes.jpg';
-import liquidsImg from '../../images/flavour.jpg';
-import disposablesImg from '../../images/diss-vape.jpg';
+import podsImg from '../../images/category pic/podkit.avif';
+import coilImg from '../../images/category pic/Coils.avif';
+import vapesImg from '../../images/category pic/vapekit.jpeg';
+import liquidsImg from '../../images/category pic/flavour.avif';
+import disposablesImg from '../../images/category pic/disspossibles.avif';
 
 
 
