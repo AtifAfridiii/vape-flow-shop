@@ -1,7 +1,7 @@
-import coil3 from '../../proImages/coils/coils3.jpg';
-import coil4 from '../../proImages/coils/coil4.jpg';
+import coil3 from '../../proImages/coils/image.png';
+import coil4 from '../../proImages/coils/image.png';
 
-export interface AccessoryTanks {
+;export interface AccessoryTanks {
   id: string;
   name: string;
   price: number;

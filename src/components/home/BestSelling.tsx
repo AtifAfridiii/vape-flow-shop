@@ -29,14 +29,15 @@ const BestSelling = ({ onAddToCart }: BestSellingProps) => {
       </div>
 
       {/* Best Selling Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Updated grid layout to be consistent with our changes */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {bestSellingProducts.map((product, index) => (
           <div
             key={product.id}
             className="animate-in fade-in slide-in-from-bottom-4 duration-500 relative"
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            {/* Best Seller Badge positioned on top of the card */}
+            {/* Best Seller Badge positioned on top of the card
             <div className="absolute -top-3 -right-3 z-20">
               <div className="relative">
                 <div className="absolute inset-0 bg-accent rounded-full blur-md opacity-50 animate-pulse" />
@@ -44,7 +45,7 @@ const BestSelling = ({ onAddToCart }: BestSellingProps) => {
                   🏆 Best Seller
                 </div>
               </div>
-            </div>
+            </div> */}
             <ProductCard
               product={product}
               onAddToCart={onAddToCart}

@@ -1,14 +1,14 @@
-import vape1 from '../proImages/img1/vape1.jpg';
-import vape2 from '../proImages/img1/vape2.jpg';
-import vape3 from '../proImages/img1/vape3.jpg';
-import vape4 from '../proImages/img1/vape4.jpg';
-import vape5 from '../proImages/img1/vape5.jpg';
-import vape6 from '../proImages/img1/vape6.jpg';
-import vape7 from '../proImages/img1/vape7.jpg';
-import e1 from '../proImages/liquids/e1.jpg';
-import e2 from '../proImages/liquids/e2.jpg';
-import pod1 from '../proImages/pod/pod1.jpg';
-import pod2 from '../proImages/pod/pod2.jpg';
+import vape1 from '../proImages/img1/ukpod.png';
+import vape2 from '../proImages/img1/ukpod.png';
+import vape3 from '../proImages/img1/ukpod.png';
+import vape4 from '../proImages/img1/ukpod.png';
+import vape5 from '../proImages/img1/ukpod.png';
+import vape6 from '../proImages/img1/ukpod.png';
+import vape7 from '../proImages/img1/ukpod.png';
+import e1 from '../proImages/img1/ukpod.png';
+import e2 from '../proImages/img1/ukpod.png';
+import pod1 from '../proImages/img1/ukpod.png';
+import pod2 from '../proImages/img1/ukpod.png';
 
 
 

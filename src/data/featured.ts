@@ -1,8 +1,8 @@
-import vape1 from '../proImages/img1/vape1.jpg';
-import blueRaspberry from '../proImages/img1/vape2.jpg';
+import vape1 from '../proImages/img1/ukpod.png';
+import blueRaspberry from '../proImages/pod/xova.png';
 import smokNord from '../proImages/pod/pod1.jpg';
-import beginnerKit from '../proImages/img1/vape4.jpg';
-import e1 from "../proImages/liquids/e1.jpg"
+import beginnerKit from '../proImages/img1/ukvape.png';
+import e1 from "../proImages/liquids/ukflv.png"
 export interface FeaturedProduct {
   id: string;
   name: string;
@@ -39,7 +39,7 @@ export const featuredData: FeaturedProduct[] = [
     price: 29.99,
     originalPrice: 45.99,
     salePercentage: 15,
-    image: smokNord,
+    image: blueRaspberry,
     category: "Pod Systems",
     featured: true
   },

@@ -1,6 +1,6 @@
-import e6 from '../../proImages/liquids/e6.jpg';
-import e7 from '../../proImages/liquids/e7.jpg';
-import e8 from '../../proImages/liquids/e8.jpg';
+import e6 from '../../proImages/liquids/ukflv.png';
+import e7 from '../../proImages/liquids/ukflv.png';
+import e8 from '../../proImages/liquids/ukflv.png';
 
 export interface ELiquidShortfill {
   id: string;

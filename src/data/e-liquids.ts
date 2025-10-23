@@ -1,11 +1,11 @@
-import e1 from '../proImages/liquids/e1.jpg';
-import e2 from '../proImages/liquids/e2.jpg';
-import e3 from '../proImages/liquids/e3.jpg';
-import e4 from '../proImages/liquids/e4.jpg';
-import e5 from '../proImages/liquids/e5.jpg';
-import e6 from '../proImages/liquids/e6.jpg';
-import e7 from '../proImages/liquids/e7.jpg';
-import e8 from '../proImages/liquids/e8.jpg';
+import e1 from '../proImages/liquids/ukflv.png';
+import e2 from '../proImages/liquids/ukflv.png';
+import e3 from '../proImages/liquids/ukflv.png';
+import e4 from '../proImages/liquids/ukflv.png';
+import e5 from '../proImages/liquids/ukflv.png';
+import e6 from '../proImages/liquids/ukflv.png';
+import e7 from '../proImages/liquids/ukflv.png';
+import e8 from '../proImages/liquids/ukflv.png';
 
 export interface ELiquid {
   id: string;

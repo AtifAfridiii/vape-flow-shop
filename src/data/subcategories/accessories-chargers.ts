@@ -1,5 +1,5 @@
-import coil1 from '../../proImages/coils/coil1.png';
-import coil2 from '../../proImages/coils/coil2.png';
+import coil1 from '../../proImages/coils/image.png';
+import coil2 from '../../proImages/coils/image.png';
 
 export interface AccessoryChargers {
   id: string;

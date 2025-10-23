@@ -1,5 +1,5 @@
-import coil6 from '../../proImages/coils/coill6.jpg';
-import coil7 from '../../proImages/coils/coil7.png';
+import coil6 from '../../proImages/coils/image.png';
+import coil7 from '../../proImages/coils/image.png';
 
 export interface AccessoryBatteries {
   id: string;

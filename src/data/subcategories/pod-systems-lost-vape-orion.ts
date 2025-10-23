@@ -1,4 +1,4 @@
-import pod7 from '../../proImages/pod/pod7.jpg';
+import pod7 from  '../../proImages/pod/xova.png';
 
 export interface PodSystemLostVapeOrion {
   id: string;

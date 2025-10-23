@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CartProvider } from "@/contexts/CartContext";
 import { SidebarProvider } from "@/contexts/SidebarContext";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { BannerProvider } from "@/contexts/BannerContext";
 import Header from "@/components/layout/Header";
 import SinglePageLayout from "@/components/layout/SinglePageLayout";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
@@ -30,16 +31,18 @@ const App = () => {
         <AuthProvider>
           <CartProvider>
             <SidebarProvider>
-            <Toaster />
-            <Sonner />
-            <AgeVerificationModal />
-            <DiscountBanner onOpenAuth={openAuth} />
-            <AuthModal open={authOpen} onOpenChange={setAuthOpen} tab={authTab} onTabChange={setAuthTab} />
-            <ChatIcon />
-            <div className="min-h-screen bg-background">
-              <Header />
-              <SinglePageLayout />
-            </div>
+              <BannerProvider>
+                <Toaster />
+                <Sonner />
+                <AgeVerificationModal />
+                <DiscountBanner onOpenAuth={openAuth} />
+                <AuthModal open={authOpen} onOpenChange={setAuthOpen} tab={authTab} onTabChange={setAuthTab} />
+                <ChatIcon />
+                <div className="min-h-screen bg-background">
+                  <Header />
+                  <SinglePageLayout />
+                </div>
+              </BannerProvider>
             </SidebarProvider>
           </CartProvider>
         </AuthProvider>

@@ -1,6 +1,6 @@
-import e1 from '../../proImages/liquids/e1.jpg';
-import e2 from '../../proImages/liquids/e2.jpg';
-import e3 from '../../proImages/liquids/e3.jpg';
+import e1 from '../../proImages/liquids/ukflv.png';
+import e2 from '../../proImages/liquids/ukflv.png';
+import e3 from '../../proImages/liquids/ukflv.png';
 
 export interface ELiquidNicSalt {
   id: string;

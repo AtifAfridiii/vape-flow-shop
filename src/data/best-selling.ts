@@ -1,11 +1,11 @@
 // Import images from different subfolders based on category
 // For Disposable Vapes - using images from img1 subfolder
-import disposableVape1 from '../proImages/img1/vape1.jpg';
-import disposableVape2 from '../proImages/img1/vape3.jpg';
+import disposableVape1 from '../proImages/img1/ukpod.png';
+import disposableVape2 from '../proImages/img1/ukvape.png';
 
 // For E-liquids - using images from liquids subfolder
-import eLiquid1 from '../proImages/liquids/e2.jpg';
-import eLiquid2 from '../proImages/liquids/e5.jpg';
+import eLiquid1 from '../proImages/liquids/ukflv.png';
+import eLiquid2 from '../proImages/liquids/ukflv.png';
 
 // For Pod Systems - using images from pod subfolder
 import podSystem1 from '../proImages/pod/pod1.jpg';

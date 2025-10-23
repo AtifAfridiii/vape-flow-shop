@@ -50,7 +50,8 @@ const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false
     const singleSubcategory = subcategoryNames[0];
     return (
       <div className="space-y-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Changed from grid-cols-1 to grid-cols-2 for mobile view */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {productsBySubcategory[singleSubcategory].map((product, index) => (
             <div
               key={product.id}
@@ -71,7 +72,8 @@ const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false
             <h2 className="text-2xl font-bold text-foreground mb-6 pb-2 border-b-2 border-accent/30 inline-block">
               Other Products
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {/* Changed from grid-cols-1 to grid-cols-2 for mobile view */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {productsWithoutSubcategory.map((product, index) => (
                 <div
                   key={product.id}
@@ -100,7 +102,8 @@ const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false
               {subcategory}
             </h2>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {/* Changed from grid-cols-1 to grid-cols-2 for mobile view */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {productsBySubcategory[subcategory].map((product, index) => (
               <div
                 key={product.id}
@@ -123,7 +126,8 @@ const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false
           <h2 className="text-2xl font-bold text-foreground mb-6 pb-2 border-b-2 border-accent/30 inline-block">
             Other Products
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {/* Changed from grid-cols-1 to grid-cols-2 for mobile view */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {productsWithoutSubcategory.map((product, index) => (
               <div
                 key={product.id}

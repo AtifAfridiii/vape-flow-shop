@@ -160,19 +160,20 @@ const CategorySidebar = ({ selectedCategory, onSelectCategory }: CategorySidebar
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-card border-r border-border z-50 transform transition-all duration-300 shadow-xl overflow-x-hidden ${
+        className={`fixed top-0 left-0 h-full w-64 z-50 transform transition-all duration-300 shadow-xl overflow-x-hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
+        style={{ backgroundColor: '#343a40' }}
       >
         <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary/5 to-accent/5">
-          <h2 className="text-base font-semibold text-foreground">Categories</h2>
+          <h2 className="text-base font-semibold" style={{ color: '#ffffff' }}>Categories</h2>
           <Button
             variant="ghost"
             size="icon"
             onClick={closeSidebar}
-            className="text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200 hover:scale-110"
+            className="text-muted-foreground hover:bg-blue-500 hover:text-foreground transition-all duration-200 hover:scale-110"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5" style={{ color: '#ffffff' }} />
           </Button>
         </div>
 
@@ -194,9 +195,12 @@ const CategorySidebar = ({ selectedCategory, onSelectCategory }: CategorySidebar
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 text-sm font-medium flex items-center justify-between animate-in slide-in-from-left ${
                     selectedCategory === category.name
                       ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md hover:shadow-lg'
-                      : 'text-foreground hover:bg-secondary hover:translate-x-1'
+                      : 'hover:bg- hover:translate-x-1'
                   }`}
-                  style={{ animationDelay: `${index * 30}ms` }}
+                  style={{
+                    animationDelay: `${index * 30}ms`,
+                    color: '#ffffff'
+                  }}
                   aria-expanded={hasSubcategories ? isOpen : undefined}
                   aria-controls={hasSubcategories ? `subcategories-${index}` : undefined}
                 >
@@ -206,6 +210,7 @@ const CategorySidebar = ({ selectedCategory, onSelectCategory }: CategorySidebar
                       className={`h-4 w-4 transition-transform duration-200 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
+                      style={{ color: '#ffffff' }}
                     />
                   )}
                 </button>
@@ -224,15 +229,16 @@ const CategorySidebar = ({ selectedCategory, onSelectCategory }: CategorySidebar
                           onClick={() => handleCategoryClick(subcategory, true)}
                           className={`w-full text-left px-3 py-2 rounded-md transition-all duration-200 text-xs flex items-center animate-in slide-in-from-left ${
                             selectedCategory === subcategory
-                              ? 'bg-accent/20 text-accent font-medium'
-                              : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground hover:translate-x-1'
+                              ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md hover:shadow-lg'
+                              : 'hover:bg-secondary/50 hover:translate-x-1'
                           }`}
                           style={{
                             animationDelay: `${(index * 30) + (subIndex * 20)}ms`,
-                            opacity: mounted ? 1 : 0
+                            opacity: mounted ? 1 : 0,
+                            color: '#ffffff'
                           }}
                         >
-                          <ChevronRight className="h-3 w-3 mr-2 flex-shrink-0" />
+                          <ChevronRight className="h-3 w-3 mr-2 flex-shrink-0" style={{ color: '#ffffff' }} />
                           <span className="truncate">{subcategory}</span>
                         </button>
                       ))}

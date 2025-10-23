@@ -29,7 +29,8 @@ const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
       </div>
 
       {/* Featured Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Updated grid layout to be consistent with our changes */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {featuredProducts.map((product, index) => (
           <div
             key={product.id}
@@ -37,14 +38,14 @@ const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
             style={{ animationDelay: `${index * 100}ms` }}
           >
             {/* Featured Badge positioned on top of the card */}
-            <div className="absolute -top-3 -right-3 z-20">
+            {/* <div className="absolute -top-3 -right-3 z-20">
               <div className="relative">
                 <div className="absolute inset-0 bg-accent rounded-full blur-md opacity-50 animate-pulse" />
                 <div className="relative bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
                   ⭐ Featured
                 </div>
               </div>
-            </div>
+            </div> */}
             <ProductCard
               product={product}
               onAddToCart={onAddToCart}

@@ -1,11 +1,11 @@
 // Import images from coils directory for accessories
-import coil1 from '../proImages/coils/coil1.png';
-import coil2 from '../proImages/coils/coil2.png';
-import coil3 from '../proImages/coils/coils3.jpg';
-import coil4 from '../proImages/coils/coil4.jpg';
-import coil5 from '../proImages/coils/coil5.jpg';
-import coil6 from '../proImages/coils/coill6.jpg';
-import coil7 from '../proImages/coils/coil7.png';
+import coil1 from '../proImages/coils/image.png';
+import coil2 from'../proImages/coils/image.png';
+import coil3 from'../proImages/coils/image.png';
+import coil4 from'../proImages/coils/image.png';
+import coil5 from'../proImages/coils/image.png';
+import coil6 from'../proImages/coils/image.png';
+import coil7 from'../proImages/coils/image.png';
 
 export interface Accessory {
   id: string;
@@ -18,7 +18,7 @@ export interface Accessory {
   trending?: boolean;
    originalPrice?: number;
   salePercentage?: number;
-  
+
 }
 
 export const accessories: Accessory[] = [

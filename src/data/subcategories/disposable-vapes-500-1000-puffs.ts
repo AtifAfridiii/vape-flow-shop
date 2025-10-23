@@ -1,5 +1,5 @@
-import vape6 from '../../proImages/img1/vape6.jpg';
-import vape7 from '../../proImages/img1/vape7.jpg';
+import vape6 from '../../proImages/img1/ukpod.png';
+import vape7 from  '../../proImages/img1/ukpod.png';
 
 export interface DisposableVape500to1000 {
   id: string;

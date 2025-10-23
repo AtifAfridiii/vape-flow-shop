@@ -1,4 +1,4 @@
-import { ShoppingCart, Check, Eye } from 'lucide-react';
+import { ShoppingCart, Check, Eye, Lock } from 'lucide-react';
 import { Product, useCart } from '@/contexts/CartContext'; // Updated import
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -6,6 +6,8 @@ import { toast } from 'sonner';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { useState } from 'react';
 import ProductDetailModal from '@/components/products/ProductDetailModal';
+import { useAuth } from '@/contexts/AuthContext'; // Added AuthContext import
+import AuthModal, { AuthTab } from '@/components/AuthModal'; // Added AuthModal import
 
 interface ProductCardProps {
   product: Product;
@@ -14,8 +16,11 @@ interface ProductCardProps {
 
 const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
   const { isProductInCart } = useCart(); // Use the new method from CartContext
+  const { isAuthenticated } = useAuth(); // Get authentication status
   const productInCart = isProductInCart(product.id); // Check if product is in cart
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false); // State for AuthModal
+  const [authTab, setAuthTab] = useState<AuthTab>('login'); // State for AuthTab
 
   const handleAddToCart = () => {
     // Only add to cart if not already in cart
@@ -47,6 +52,11 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
     setIsModalOpen(false);
   };
 
+  const handleAuthSuccess = () => {
+    // Close the auth modal after successful authentication
+    setAuthModalOpen(false);
+  };
+
   return (
     <div className="relative">
       <GlowingEffect
@@ -58,7 +68,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         borderWidth={2}
         className="rounded-xl"
       />
-      <Card className="overflow-hidden border-border shadow-md hover:shadow-xl transition-all duration-300 bg-secondary hover:translate-y-[-4px] group relative z-10 rounded-xl">
+      <Card className="overflow-hidden border-border shadow-md hover:shadow-xl transition-all duration-300 bg-secondary hover:translate-y-[-4px] group relative z-10 rounded-xl h-full flex flex-col">
         <div className="aspect-square overflow-hidden bg-muted relative">
           <img
             src={product.image}
@@ -70,8 +80,10 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
           {/* SALE Badge */}
           {product.originalPrice && product.salePercentage && (
             <div className="absolute top-2 left-2 z-20">
-              <div className="bg-red-600 text-white px-2.5 py-1 rounded-md shadow-lg text-xs font-bold uppercase">
-                Sale {product.salePercentage}% Off
+              <div className="bg-black text-white px-2 py-1 rounded-md shadow-lg font-bold uppercase tracking-wide whitespace-nowrap
+                              text-[0.6rem] sm:text-[0.65rem] md:text-xs
+                              px-1.5 py-0.5 sm:px-2 sm:py-1">
+                -{product.salePercentage}% Off
               </div>
             </div>
           )}
@@ -85,10 +97,10 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
             <Eye className="h-4 w-4 text-white" />
           </button>
         </div>
-        <CardContent className="p-4">
+        <CardContent className="p-3 flex-grow">
           <h3 className="font-semibold text-foreground mb-1 text-sm line-clamp-2 group-hover:text-accent transition-colors duration-200">{product.name}</h3>
-          <p className="text-xs text-muted-foreground mb-3">{product.category}</p>
-          
+          <p className="text-xs text-muted-foreground mb-2">{product.category}</p>
+
           {/* Price Display */}
           <div className="flex items-center gap-2 flex-wrap">
             {product.originalPrice ? (
@@ -96,39 +108,51 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
                 <span className="text-sm text-muted-foreground line-through decoration-red-500 decoration-2">
                   £{product.originalPrice.toFixed(2)}
                 </span>
-                <span className="text-lg font-bold text-red-600">
+                <span className="text-lg font-bold text-black">
                   £{product.price.toFixed(2)}
                 </span>
               </>
             ) : (
-              <span className="text-base font-semibold text-primary">
+              <span className="text-base font-semibold text-black">
                 £{product.price.toFixed(2)}
               </span>
             )}
           </div>
         </CardContent>
-        <CardFooter className="p-4 pt-0">
-          <Button
-            onClick={handleAddToCart}
-            disabled={productInCart} // Disable button if product is in cart
-            className={`w-full text-sm font-medium transition-all duration-200 hover:shadow-lg ${
-              productInCart
-                ? 'bg-emerald-500 hover:bg-emerald-600 text-white'
-                : 'bg-primary hover:bg-emerald-600 text-primary-foreground hover:text-white'
-            }`}
-          >
-            {productInCart ? (
-              <>
-                <Check className="h-4 w-4 mr-2" />
-                Added to Cart
-              </>
-            ) : (
-              <>
-                <ShoppingCart className="h-4 w-4 mr-2 transition-transform duration-200 group-hover:scale-110" />
-                Add to Cart
-              </>
-            )}
-          </Button>
+        <CardFooter className="p-3 pt-0">
+          {/* Conditional rendering based on authentication status */}
+          {isAuthenticated ? (
+            <Button
+              onClick={handleAddToCart}
+              disabled={productInCart} // Disable button if product is in cart
+              className={`w-full text-sm font-medium transition-all duration-200 hover:shadow-lg h-9 ${
+                productInCart
+                  ? 'bg-emerald-500 hover:bg-emerald-600 text-white'
+                  : 'bg-primary hover:bg-emerald-600 text-primary-foreground hover:text-white'
+              }`}
+            >
+              {productInCart ? (
+                <>
+                  <Check className="h-4 w-4 mr-2" />
+                  Added to Cart
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="h-4 w-4 mr-2 transition-transform duration-200 group-hover:scale-110" />
+                  Add to Cart
+                </>
+              )}
+            </Button>
+          ) : (
+            <Button
+              variant="outline"
+              className="w-full text-sm sm:text-base font-medium transition-all duration-200 hover:shadow-lg h-9 sm:h-10 border-black border-2 flex items-center justify-center gap-2 px-2 sm:px-4"
+              onClick={() => setAuthModalOpen(true)} // Open AuthModal on click
+            >
+              <Lock className="h-4 w-4 sm:h-5 sm:w-5 " />
+              <span className="truncate">Log in to see price</span>
+            </Button>
+          )}
         </CardFooter>
       </Card>
 
@@ -136,6 +160,15 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       <ProductDetailModal
         product={isModalOpen ? product : null}
         onClose={closeModal}
+      />
+
+      {/* Auth Modal */}
+      <AuthModal
+        open={authModalOpen}
+        onOpenChange={setAuthModalOpen}
+        tab={authTab}
+        onTabChange={setAuthTab}
+        onAuthSuccess={handleAuthSuccess}
       />
     </div>
   );

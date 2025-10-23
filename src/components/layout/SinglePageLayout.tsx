@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Product, useCart } from '@/contexts/CartContext';
+import { useBanner } from '@/contexts/BannerContext';
 import { products } from '@/data/products';
 import HeroCarousel from '@/components/home/HeroCarousel';
 import ProductCategories from '@/components/home/ProductCategories';
@@ -83,6 +84,7 @@ const categoryStructure: CategoryStructure[] = [
 ];
 
 const SinglePageLayout = () => {
+  const { isBannerVisible, setIsBannerVisible } = useBanner();
   const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState('All Products');
   const [activeSection, setActiveSection] = useState<'products' | 'about' | 'support' | 'location'>('products');
@@ -90,22 +92,37 @@ const SinglePageLayout = () => {
   const [isCategoryFromMainSection, setIsCategoryFromMainSection] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
-  const [isBannerVisible, setIsBannerVisible] = useState(true); // For fade animation
   const [bannerMessages] = useState([
     { icon: Zap, text: "Buy pack of 3 and get 1 flavour free!", color: "text-yellow-300" },
     { icon: Star, text: "Limited time offer - Up to 30% off!", color: "text-yellow-300" },
     { icon: Truck, text: "Free UK Delivery over £50", color: "text-yellow-300" }
   ]);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  // Rotate banner messages with smooth fade transition
+  // Handle banner visibility based on hero section visibility
+  useEffect(() => {
+    const heroElement = heroRef.current;
+    if (!heroElement) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show banner only when hero section is in view
+        setIsBannerVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0, // Trigger when any part of the hero section enters/leaves viewport
+      }
+    );
+
+    observer.observe(heroElement);
+    return () => observer.unobserve(heroElement);
+  }, [setIsBannerVisible]);
+
+  // Rotate banner messages without fade animation
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsBannerVisible(false);
-      setTimeout(() => {
-        setCurrentMessageIndex(prev => (prev + 1) % bannerMessages.length);
-        setIsBannerVisible(true);
-      }, 500);
+      setCurrentMessageIndex(prev => (prev + 1) % bannerMessages.length);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -225,39 +242,24 @@ const SinglePageLayout = () => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Rotate banner messages with smooth fade transition
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsBannerVisible(false);
-      setTimeout(() => {
-        setCurrentMessageIndex(prev => (prev + 1) % bannerMessages.length);
-        setIsBannerVisible(true);
-      }, 500);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [bannerMessages.length]);
-
   return (
     <>
-      {/* Enhanced Promotional Banner with Fade Animation */}
-      <div className={`fixed top-16 left-0 right-0 z-30 transition-all duration-500 ease-in-out ${
-        isBannerVisible ? 'opacity-80 bg-black translate-y-0' : 'opacity-100 bg-black -translate-y-full'
-      }`}>
-        <div className="border-b border-border shadow-xl bg-gradient-to-r from-primary/90 via-accent to-primary/90 text-primary-foreground">
-          <div className="container mx-auto px-4 py-3 flex items-center justify-center overflow-hidden">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
+      {/* Enhanced Promotional Banner - Fully responsive with solid green background */}
+      <div className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${isBannerVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className="bg-[#91cb3e] text-white">
+          <div className="container mx-auto px-2 py-1 sm:px-4 sm:py-2 flex items-center justify-center">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 {(() => {
                   const IconComponent = bannerMessages[currentMessageIndex].icon;
                   return (
                     <IconComponent
-                      className={`h-5 w-5 ${bannerMessages[currentMessageIndex].color} animate-bounce`}
+                      className={`h-4 w-4 sm:h-5 sm:w-5 ${bannerMessages[currentMessageIndex].color} animate-bounce`}
                       style={{ animationDelay: '0ms' }}
                     />
                   );
                 })()}
-                <span className="font-bold tracking-wide text-lg bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white">
+                <span className="font-bold tracking-wide text-xs sm:text-sm md:text-base text-center">
                   {bannerMessages[currentMessageIndex].text}
                 </span>
               </div>
@@ -271,11 +273,11 @@ const SinglePageLayout = () => {
         onSelectCategory={handleSelectCategory}
       />
 
-      <main className="container mx-auto px-4 pt-4 pb-20 space-y-12">
+      <main className="container mx-auto px-4 pt-12 sm:pt-14 md:pt-16 pb-20 space-y-12">
         {/* Products Section */}
-        <section ref={productsRef} className="scroll-mt-32 animate-in fade-in duration-500">
+        <section ref={productsRef} className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">
-            <div className="relative -ml-4 -mr-4">
+            <div className="relative -ml-4 -mr-4" ref={heroRef}>
               <HeroCarousel />
             </div>
 
@@ -301,7 +303,7 @@ const SinglePageLayout = () => {
             />
 
             {/* Product Grid */}
-            <div ref={productGridRef} className="scroll-mt-8">
+            <div ref={productGridRef} className="scroll-mt-12">
               <h2 className="text-2xl font-semibold text-foreground mb-6 pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">
                 {selectedCategory}
               </h2>
@@ -333,7 +335,7 @@ const SinglePageLayout = () => {
         </section>
 
         {/* Popular Brands Section */}
-        <section className="scroll-mt-32 animate-in fade-in duration-500">
+        <section className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">
             <h2 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">
               Popular Brands
@@ -404,7 +406,7 @@ const SinglePageLayout = () => {
         </section>
 
         {/* About Section */}
-        <section ref={aboutRef} className="scroll-mt-32 animate-in fade-in duration-500">
+        <section ref={aboutRef} className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">
             <h1 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">About Us</h1>
 
@@ -487,7 +489,7 @@ const SinglePageLayout = () => {
         </section>
 
         {/* Features Section */}
-        <section className="scroll-mt-32 animate-in fade-in duration-500">
+        <section className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">
             <h2 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">Why Our Customers Love Us</h2>
 
@@ -526,7 +528,7 @@ const SinglePageLayout = () => {
         </section>
 
         {/* Statistics Section */}
-        <section className="scroll-mt-32 animate-in fade-in duration-500">
+        <section className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="bg-gradient-to-r from-primary/5 via-accent/5 to-primary/10 rounded-lg p-8 md:p-12 shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="group hover:scale-105 transition-transform duration-300">
@@ -549,7 +551,7 @@ const SinglePageLayout = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="scroll-mt-32 animate-in fade-in duration-500">
+        <section className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">
             <h2 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">What Our Customers Say</h2>
 
@@ -642,12 +644,12 @@ const SinglePageLayout = () => {
         </section>
 
         {/* Our Location Section */}
-        <section ref={locationRef} className="scroll-mt-32 animate-in fade-in duration-500">
+        <section ref={locationRef} className="scroll-mt-36 animate-in fade-in duration-500">
           <OurLocation />
         </section>
 
         {/* Newsletter Section */}
-        <section className="scroll-mt-32 animate-in fade-in duration-500">
+        <section className="scroll-mt-36 animate-in fade-in duration-500">
           <Card className="border-border shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-primary to-accent overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <CardContent className="p-8 md:p-12 relative">
@@ -685,7 +687,7 @@ const SinglePageLayout = () => {
         </section>
 
         {/* Support Section */}
-        <section ref={supportRef} className="scroll-mt-32 animate-in fade-in duration-500">
+        <section ref={supportRef} className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">
             <h1 className="text-3xl font-semibold text-foreground pb-3 border-b-2 border-accent/30 inline-block transition-all duration-300 hover:border-accent">Customer Support</h1>
 

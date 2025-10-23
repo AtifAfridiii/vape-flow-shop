@@ -1,5 +1,5 @@
-import pod1 from '../../proImages/pod/pod1.jpg';
-import pod2 from '../../proImages/pod/pod2.jpg';
+import pod1 from  '../../proImages/pod/xova.png';
+import pod2 from  '../../proImages/pod/xova.png';
 
 export interface PodSystemSmokNord {
   id: string;

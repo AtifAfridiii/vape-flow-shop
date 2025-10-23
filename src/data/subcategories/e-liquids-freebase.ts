@@ -1,5 +1,5 @@
-import e4 from '../../proImages/liquids/e4.jpg';
-import e5 from '../../proImages/liquids/e5.jpg';
+import e4 from '../../proImages/liquids/ukflv.png';
+import e5 from '../../proImages/liquids/ukflv.png';
 
 export interface ELiquidFreebase {
   id: string;

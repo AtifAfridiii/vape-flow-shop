@@ -5,8 +5,6 @@ import vapesImg from '../../images/category pic/vapekit.jpeg';
 import liquidsImg from '../../images/category pic/flavour.avif';
 import disposablesImg from '../../images/category pic/disspossibles.avif';
 
-
-
 interface ProductCategoriesProps {
   onSelectCategory: (category: string) => void;
   onNavigateToProducts?: () => void;
@@ -18,7 +16,7 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
     if (displayName === 'Disposables vapes') {
       return;
     }
-    
+
     onSelectCategory(displayName);
     // Trigger smooth scroll to products section after a brief delay
     if (onNavigateToProducts) {
@@ -62,10 +60,10 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
         Shop by Categories
       </h2>
 
-      {/* Masonry-style grid layout */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* First column with 2 smaller cards */}
-        <div className="flex flex-col gap-6">
+      {/* Responsive grid layout - 2 columns on mobile, masonry on desktop */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        {/* First column - 2 smaller cards on all screens */}
+        <div className="flex flex-col gap-4 md:gap-6">
           {categories.slice(0, 2).map((cat, idx) => (
             <button
               key={cat.id}
@@ -74,12 +72,12 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
               className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
               style={{ animationDelay: `${idx * 100}ms` }}
             >
-              <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-64 md:h-72 rounded-lg">
+              <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-48 sm:h-56 md:h-72 rounded-lg">
                 <div className="relative w-full h-full">
                   <img src={cat.image} alt={cat.name} className="w-full h-full object-cover object-center" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  <div className="absolute left-4 bottom-4">
-                    <span className="inline-block bg-black/60 text-white text-sm md:text-base font-semibold px-3 py-1 rounded-full shadow-lg max-w-[85%] truncate block">
+                  <div className="absolute left-3 bottom-3 md:left-4 md:bottom-4">
+                    <span className="inline-block bg-black/60 text-white text-xs sm:text-sm md:text-base font-semibold px-2 py-1 md:px-3 md:py-1 rounded-full shadow-lg max-w-[85%] truncate block">
                       {cat.displayName}
                     </span>
                   </div>
@@ -87,10 +85,32 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
               </Card>
             </button>
           ))}
+
+          {/* Third column content moved here for mobile - large card (visible on mobile, spans full width) */}
+          <div className="md:hidden">
+            <button
+              onClick={() => handleCategoryClick("Pod Systems")}
+              aria-label="View Pod Systems"
+              className="group w-full h-full transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+              style={{ animationDelay: '400ms' }}
+            >
+              <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-48 sm:h-56 md:h-72 rounded-lg">
+                <div className="relative w-full h-full">
+                  <img src={podsImg} alt="Pod Systems" className="w-full h-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div className="absolute left-3 bottom-3 md:left-4 md:bottom-4">
+                    <span className="inline-block bg-black/60 text-white text-xs sm:text-sm md:text-base font-semibold px-2 py-1 md:px-3 md:py-1 rounded-full shadow-lg max-w-[85%] truncate block">
+                      Pod Systems
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </button>
+          </div>
         </div>
 
-        {/* Second column with 2 smaller cards */}
-        <div className="flex flex-col gap-6">
+        {/* Second column - 2 smaller cards on all screens */}
+        <div className="flex flex-col gap-4 md:gap-6">
           {categories.slice(2, 4).map((cat, idx) => (
             <button
               key={cat.id}
@@ -99,12 +119,12 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
               className="group transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
               style={{ animationDelay: `${(idx + 2) * 100}ms` }}
             >
-              <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-64 md:h-72 rounded-lg">
+              <Card className="border-2 border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden h-48 sm:h-56 md:h-72 rounded-lg">
                 <div className="relative w-full h-full">
                   <img src={cat.image} alt={cat.name} className="w-full h-full object-cover object-center" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  <div className="absolute left-4 bottom-4">
-                    <span className="inline-block bg-black/60 text-white text-sm md:text-base font-semibold px-3 py-1 rounded-full shadow-lg max-w-[85%] truncate block">
+                  <div className="absolute left-3 bottom-3 md:left-4 md:bottom-4">
+                    <span className="inline-block bg-black/60 text-white text-xs sm:text-sm md:text-base font-semibold px-2 py-1 md:px-3 md:py-1 rounded-full shadow-lg max-w-[85%] truncate block">
                       {cat.displayName}
                     </span>
                   </div>
@@ -114,8 +134,8 @@ const ProductCategories = ({ onSelectCategory, onNavigateToProducts }: ProductCa
           ))}
         </div>
 
-        {/* Third column with 1 large card spanning full height */}
-        <div className="md:row-span-2">
+        {/* Third column - large card (hidden on mobile, spans full height on desktop) */}
+        <div className="hidden md:block md:row-span-2">
           <button
             onClick={() => handleCategoryClick("Pod Systems")}
             aria-label="View Pod Systems"

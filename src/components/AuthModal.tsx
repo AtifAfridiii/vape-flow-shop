@@ -24,12 +24,12 @@ interface AuthModalProps {
   onAuthSuccess?: () => void;
 }
 
-const AuthModal: React.FC<AuthModalProps> = ({ 
-  open, 
-  onOpenChange, 
-  tab, 
+const AuthModal: React.FC<AuthModalProps> = ({
+  open,
+  onOpenChange,
+  tab,
   onTabChange,
-  onAuthSuccess 
+  onAuthSuccess
 }) => {
   const { login, signup } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +45,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
       toast.success("Welcome back! You're now logged in.");
       onOpenChange(false);
       setLoginData({ email: '', password: '' });
-      
+
       // Call the success callback if provided
       if (onAuthSuccess) {
         onAuthSuccess();
@@ -66,7 +66,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
       toast.success("Account created successfully! Welcome aboard!");
       onOpenChange(false);
       setSignupData({ name: '', email: '', password: '' });
-      
+
       // Call the success callback if provided
       if (onAuthSuccess) {
         onAuthSuccess();
@@ -102,9 +102,9 @@ const AuthModal: React.FC<AuthModalProps> = ({
             <form onSubmit={handleSignupSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="signup-name">Name</Label>
-                <Input 
-                  id="signup-name" 
-                  required 
+                <Input
+                  id="signup-name"
+                  required
                   placeholder="Your name"
                   value={signupData.name}
                   onChange={(e) => setSignupData({ ...signupData, name: e.target.value })}
@@ -113,10 +113,10 @@ const AuthModal: React.FC<AuthModalProps> = ({
               </div>
               <div className="space-y-2">
                 <Label htmlFor="signup-email">Email</Label>
-                <Input 
-                  id="signup-email" 
-                  type="email" 
-                  required 
+                <Input
+                  id="signup-email"
+                  type="email"
+                  required
                   placeholder="you@example.com"
                   value={signupData.email}
                   onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
@@ -125,18 +125,18 @@ const AuthModal: React.FC<AuthModalProps> = ({
               </div>
               <div className="space-y-2">
                 <Label htmlFor="signup-password">Password</Label>
-                <Input 
-                  id="signup-password" 
-                  type="password" 
-                  required 
+                <Input
+                  id="signup-password"
+                  type="password"
+                  required
                   placeholder="••••••••"
                   value={signupData.password}
                   onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
                   disabled={isLoading}
                 />
               </div>
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700"
                 disabled={isLoading}
               >
@@ -156,10 +156,10 @@ const AuthModal: React.FC<AuthModalProps> = ({
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="login-email">Email</Label>
-                <Input 
-                  id="login-email" 
-                  type="email" 
-                  required 
+                <Input
+                  id="login-email"
+                  type="email"
+                  required
                   placeholder="you@example.com"
                   value={loginData.email}
                   onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
@@ -168,18 +168,18 @@ const AuthModal: React.FC<AuthModalProps> = ({
               </div>
               <div className="space-y-2">
                 <Label htmlFor="login-password">Password</Label>
-                <Input 
-                  id="login-password" 
-                  type="password" 
-                  required 
+                <Input
+                  id="login-password"
+                  type="password"
+                  required
                   placeholder="••••••••"
                   value={loginData.password}
                   onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                   disabled={isLoading}
                 />
               </div>
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700"
                 disabled={isLoading}
               >

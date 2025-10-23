@@ -1,11 +1,11 @@
 // Import images from different subfolders based on category
 // For Disposable Vapes - using images from img1 subfolder
-import disposableVape1 from '../proImages/img1/vape2.jpg';
-import disposableVape2 from '../proImages/img1/vape4.jpg';
+import disposableVape1 from '../proImages/img1/ukvape.png';
+import disposableVape2 from '../proImages/img1/ukpod.png';
 
 // For E-liquids - using images from liquids subfolder
-import eLiquid5 from '../proImages/liquids/e1.jpg';
-import eLiquid2 from '../proImages/liquids/e3.jpg';
+import eLiquid5 from '../proImages/liquids/ukflv.png';
+import eLiquid2 from '../proImages/liquids/ukflv.png';
 
 // For Pod Systems - using images from pod subfolder
 import podSystem1 from '../proImages/pod/pod2.jpg';
@@ -55,8 +55,8 @@ export const trendingProducts: TrendingProduct[] = [
     "id": "el-3",
     "name": "Dragon Fruit E-liquid",
     "price": 3.99,
-    "originalPrice": 5.99,  
-    "salePercentage": 20,  
+    "originalPrice": 5.99,
+    "salePercentage": 20,
     "image": eLiquid2,
     "category": "E-liquids",
     "trending": true,
@@ -75,8 +75,8 @@ export const trendingProducts: TrendingProduct[] = [
     "id": "vk-2",
     "name": "Premium Pod Kit",
     "price": 44.99,
-    "originalPrice": 55.99,  
-    "salePercentage":10, 
+    "originalPrice": 55.99,
+    "salePercentage":10,
     "image": starterKit1,
     "category": "Starter Kits",
     "trending": true

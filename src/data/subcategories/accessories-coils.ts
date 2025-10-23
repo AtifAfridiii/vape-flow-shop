@@ -1,6 +1,6 @@
-import coil1 from '../../proImages/coils/coil1.png';
-import coil2 from '../../proImages/coils/coil2.png';
-import coil3 from '../../proImages/coils/coils3.jpg';
+import coil1 from '../../proImages/coils/image.png';
+import coil2 from '../../proImages/coils/image.png';
+import coil3 from '../../proImages/coils/image.png';
 
 export interface AccessoryCoils {
   id: string;

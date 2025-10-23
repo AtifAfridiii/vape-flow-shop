@@ -1,5 +1,5 @@
-import coil4 from '../../proImages/coils/coil4.jpg';
-import coil5 from '../../proImages/coils/coil5.jpg';
+import coil4 from '../../proImages/coils/image.png';
+import coil5 from '../../proImages/coils/image.png';
 
 export interface AccessoryReplacementParts {
   id: string;

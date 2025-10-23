@@ -1,5 +1,5 @@
-import coil4 from '../../proImages/coils/coil4.jpg';
-import coil5 from '../../proImages/coils/coil5.jpg';
+import coil4 from '../../proImages/img1/ukvape.png';
+import coil5 from '../../proImages/img1/ukvape.png';
 
 export interface StarterKitPod {
   id: string;

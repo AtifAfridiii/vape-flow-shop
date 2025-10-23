@@ -54,7 +54,7 @@
     --muted-foreground-hex: #6B7280;
 
     /* Accent: Dark Navy (Minimal) */
-    --accent-hex: #023047;
+    --accent-hex: #343a40;
     --accent-foreground-hex: #FFFFFF;
 
     /* Destructive: Muted Red */
@@ -94,7 +94,7 @@
     --muted-foreground: 217 17% 42%;
 
     /* Accent: Gold (HSL) */
-    --accent: 200, 94.52%, 14.31%;
+    --accent: 210, 10.34%, 22.75%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive: Muted Red (HSL) */

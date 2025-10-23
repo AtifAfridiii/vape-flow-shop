@@ -1,5 +1,5 @@
-import pod3 from '../../proImages/pod/pod3.jpg';
-import pod4 from '../../proImages/pod/pod4.jpg';
+import pod3 from  '../../proImages/pod/xova.png';
+import pod4 from  '../../proImages/pod/xova.png';
 
 export interface PodSystemVaporessoXros {
   id: string;

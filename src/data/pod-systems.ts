@@ -1,10 +1,10 @@
-import pod1 from '../proImages/pod/pod1.jpg';
-import pod2 from '../proImages/pod/pod2.jpg';
-import pod3 from '../proImages/pod/pod3.jpg';
-import pod4 from '../proImages/pod/pod4.jpg';
-import pod5 from '../proImages/pod/pod5.jpg';
-import pod6 from '../proImages/pod/pod6.jpg';
-import pod7 from '../proImages/pod/pod7.jpg';
+import pod1 from '../proImages/pod/xova.png';
+import pod2 from '../proImages/pod/xova.png';
+import pod3 from '../proImages/pod/xova.png';
+import pod4 from '../proImages/pod/xova.png';
+import pod5 from '../proImages/pod/xova.png';
+import pod6 from '../proImages/pod/xova.png';
+import pod7 from '../proImages/pod/xova.png';
 
 export interface PodSystem {
   id: string;

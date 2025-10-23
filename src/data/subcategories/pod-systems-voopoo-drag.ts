@@ -1,5 +1,5 @@
-import pod5 from '../../proImages/pod/pod5.jpg';
-import pod6 from '../../proImages/pod/pod6.jpg';
+import pod5 from  '../../proImages/pod/xova.png';
+import pod6 from  '../../proImages/pod/xova.png';
 
 export interface PodSystemVoopooDrag {
   id: string;

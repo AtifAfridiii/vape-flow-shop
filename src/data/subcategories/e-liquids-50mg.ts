@@ -1,4 +1,4 @@
-import e5 from '../../proImages/liquids/e5.jpg';
+import e5 from '../../proImages/liquids/ukflv.png';
 
 export interface ELiquid50mg {
   id: string;

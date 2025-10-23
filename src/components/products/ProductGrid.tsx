@@ -16,7 +16,8 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    // Changed from grid-cols-1 to grid-cols-2 for mobile view
+    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {products.map((product, index) => (
         <div
           key={product.id}

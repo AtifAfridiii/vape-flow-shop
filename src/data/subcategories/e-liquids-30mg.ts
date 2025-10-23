@@ -1,6 +1,6 @@
-import e3 from '../../proImages/liquids/e3.jpg';
-import e4 from '../../proImages/liquids/e4.jpg';
-import e7 from '../../proImages/liquids/e7.jpg';
+import e3 from '../../proImages/liquids/ukflv.png';
+import e4 from '../../proImages/liquids/ukflv.png';
+import e7 from '../../proImages/liquids/ukflv.png';
 
 export interface ELiquid30mg {
   id: string;
