@@ -57,7 +57,7 @@ const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
       {/* Divider */}
       <div className="mt-12 mb-8 flex items-center gap-4">
         <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border border to-transparent" />
-        <span className="text-sm text-muted-foreground font-bold uppercase tracking-wider">
+        <span className="text-md text-muted-foreground font-bold uppercase tracking-wider">
           Browse All Products
         </span>
         <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border border to-transparent" />
