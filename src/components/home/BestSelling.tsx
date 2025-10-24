@@ -56,11 +56,11 @@ const BestSelling = ({ onAddToCart }: BestSellingProps) => {
 
       {/* Divider */}
       <div className="mt-12 mb-8 flex items-center gap-4">
-        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-        <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border  border to-transparent" />
+        <span className="text-sm text-muted-foreground font-bold uppercase tracking-wider">
           Customer Favorites
         </span>
-        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border border to-transparent" />
       </div>
     </div>
   );

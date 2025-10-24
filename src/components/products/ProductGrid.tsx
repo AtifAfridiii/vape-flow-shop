@@ -65,7 +65,7 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
             <div className="my-8">
               <AnimatedDivider
                 gradientColors={['#91cb3e', '#ffffff', '#91cb3e']}
-                height={2}
+                height={4}
                 animationDuration={3}
               />
             </div>
