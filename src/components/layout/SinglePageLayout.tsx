@@ -16,6 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Phone, Clock, MapPin, Zap, Shield, Truck, Award, Star, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThreeDScrollTriggerContainer, ThreeDScrollTriggerRow } from '@/components/ThreeDScrollTrigger';
+import PromotionalBanner from '../home/PromotionalBanner';
 
 interface CategoryStructure {
   name: string;
@@ -301,6 +302,7 @@ const SinglePageLayout = () => {
             <BestSelling
               onAddToCart={handleAddToCart}
             />
+<PromotionalBanner imageUrl='https://th.bing.com/th/id/R.f5d67afbd0552869add8e6ba9737dbae?rik=IA3GG5rc8X6%2f8Q&riu=http%3a%2f%2fwww.vapesdirect.co.uk%2fcdn%2fshop%2farticles%2fThe_Best_Vape_Deals_Ever_on_Black_Friday_2019_1024x1024.jpg%3fv%3d1575037168&ehk=RSJ9f7E8bhAiIOkqJsZZ75UOsponcRQjo7OvJRk7uog%3d&risl=&pid=ImgRaw&r=0'  heading='Black Friday Deals' description='Dont miss out on the best deals!' />
 
             {/* Product Grid */}
             <div ref={productGridRef} className="scroll-mt-12">
@@ -333,7 +335,7 @@ const SinglePageLayout = () => {
             </div>
           </div>
         </section>
-
+<PromotionalBanner imageUrl='https://www.theaceofvapez.com/cdn/shop/files/Clearance_deal_-_The_Ace_of_vapez_mobile_banner.jpg?v=1742204113&width=550' heading='Deal of the Day' description='Buy 1 Get 2 for only 0'  />
         {/* Popular Brands Section */}
         <section className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">
@@ -404,7 +406,6 @@ const SinglePageLayout = () => {
             </div>
           </div>
         </section>
-
         {/* About Section */}
         <section ref={aboutRef} className="scroll-mt-36 animate-in fade-in duration-500">
           <div className="space-y-8">

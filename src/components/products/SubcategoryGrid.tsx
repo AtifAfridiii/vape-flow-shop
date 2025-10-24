@@ -1,6 +1,7 @@
 import { Product } from '@/contexts/CartContext';
 import ProductCard from './ProductCard';
 import { useMemo } from 'react';
+import AnimatedDivider from '@/components/ui/animated-divider';
 
 interface SubcategoryGridProps {
   products: Product[];
@@ -95,7 +96,7 @@ const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false
 
   return (
     <div className="space-y-12">
-      {subcategoryNames.map((subcategory) => (
+      {subcategoryNames.map((subcategory, index) => (
         <section key={subcategory} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           {!hideSubcategoryHeading && (
             <h2 className="text-2xl font-bold text-foreground mb-6 pb-2 border-b-2 border-accent/30 inline-block">
@@ -104,11 +105,11 @@ const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false
           )}
           {/* Changed from grid-cols-1 to grid-cols-2 for mobile view */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {productsBySubcategory[subcategory].map((product, index) => (
+            {productsBySubcategory[subcategory].map((product, idx) => (
               <div
                 key={product.id}
                 className="animate-in fade-in slide-in-from-bottom-4 duration-500 relative"
-                style={{ animationDelay: `${index * 50}ms` }}
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
                 <ProductCard
                   product={product}
@@ -117,6 +118,17 @@ const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false
               </div>
             ))}
           </div>
+
+          {/* Add animated divider between subcategory sections, except after the last one */}
+          {index < subcategoryNames.length - 1 && (
+            <div className="my-8">
+              <AnimatedDivider
+               gradientColors={['#91cb3e', '#ffffff', '#91cb3e']}
+               height={2}
+               animationDuration={3}
+              />
+            </div>
+          )}
         </section>
       ))}
 
