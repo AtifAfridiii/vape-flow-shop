@@ -7,9 +7,10 @@ interface SubcategoryGridProps {
   products: Product[];
   onAddToCart: (product: Product) => void;
   hideSubcategoryHeading?: boolean; // New prop to control heading visibility
+  showPromotionalBanner?: boolean; // New prop for consistency with ProductGrid
 }
 
-const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false }: SubcategoryGridProps) => {
+const SubcategoryGrid = ({ products, onAddToCart, hideSubcategoryHeading = false, showPromotionalBanner = false }: SubcategoryGridProps) => {
   // Group products by subcategory
   const productsBySubcategory = useMemo(() => {
     const subcategoryMap: Record<string, Product[]> = {};

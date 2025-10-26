@@ -51,6 +51,7 @@ const Home = () => {
           <ProductGrid
             products={filteredProducts}
             onAddToCart={handleAddToCart}
+            showPromotionalBanner={true}
           />
         </div>
       </div>
