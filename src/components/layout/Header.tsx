@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 import CartSidebar from '@/components/cart/CartSidebar';
 import { products } from '@/data/products';
 import { useAuth } from '@/contexts/AuthContext';
+import logo1 from "@/images/logo2.png"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -146,9 +147,9 @@ const Header = () => {
               className="hover:opacity-80 transition-opacity cursor-pointer flex-shrink-0"
             >
               <img
-                src="https://www.no1ukvapesupplier.co.uk/cdn/shop/files/logo_220x@2x.png?v=1722962006"
+                src={logo1}
                 alt="VapeShop Logo"
-                className="h-8 sm:h-10 md:h-12 w-auto"
+                className="h-8 sm:h-10 md:h-12 w-auto "
               />
             </button>
           </div>
